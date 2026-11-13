@@ -1218,8 +1218,12 @@ function onScroll() {
   // el canvas solo se dibuja cuando se ve: en el hero o mientras la sección del corazón está en pantalla
   const catBottom = catTop + catalogEl.offsetHeight;
   const coveredByCatalog = y >= catTop && y + vh <= catBottom;
+  // tapado por el catálogo: se queda quieto el último cuadro (se sigue viendo tras el vidrio, sin gastar).
+  // Antes en celular se ocultaba y los globos "desaparecían"; ahora solo se pausan.
   control.frozen = coveredByCatalog;
-  control.canvasVisible = !(coveredByCatalog && innerWidth < 760) && y + 40 < footTop && !(control.cfgOnScreen && innerWidth < 760);
+  // celular con el diseñador 3D en pantalla: los globos siguen, pero a 30 fps para dejarle aire al diseñador
+  control.lowPower = !!control.cfgOnScreen && innerWidth < 760;
+  control.canvasVisible = y + 40 < footTop;
   stageEl.style.visibility = control.canvasVisible ? 'visible' : 'hidden';
   const stage = progress > 1.3 ? 2 : 0;
   if (stage !== lastStage) { bgEl.dataset.stage = stage; lastStage = stage; }
@@ -1448,6 +1452,9 @@ async function createCfgScene() {
     import('three/addons/utils/BufferGeometryUtils.js'),
   ]);
   try { await document.fonts.load('700 100px "Dancing Script"'); } catch (e) {}
+  // armar el diseñador por partes: entre parte y parte el navegador sigue dibujando (el scroll no se congela)
+  const breathe = () => new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+  await breathe();
 
   const canvas = $('#cfg-canvas');
   const mobile = innerWidth < 768;
@@ -1459,10 +1466,13 @@ async function createCfgScene() {
   renderer.toneMappingExposure = 1.0;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = T.PCFSoftShadowMap;
+  await breathe();
 
   const scene = new T.Scene();
   const pmrem = new T.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;   // reflejos de estudio (cromado)
+  pmrem.dispose();
+  await breathe();
 
   const camera = new T.PerspectiveCamera(32, 1, 0.1, 60);
   camera.position.set(0, 1.55, 6);
@@ -1943,8 +1953,27 @@ async function createCfgScene() {
     return c.toDataURL('image/jpeg', 0.8);
   }
 
-  // primera vez: se arma e infla
-  build(); phase = REDUCE ? 'idle' : 'in'; phaseStart = performance.now(); writeInstances(phaseStart);
+  // shaders compilados en segundo plano (no a media animación ni al primer cuadro visible),
+  // también los de los otros acabados para que cambiar a cromado/transparente no trabe
+  await breathe();
+  build();
+  await breathe();
+  // piezas mínimas con cada material (número, bases, pesas, burbuja…) para compilar también los que aún no se ven
+  const warm = new T.Group(), warmGeo = new T.SphereGeometry(0.001, 4, 3);
+  for (const m of [discMat, rimMat, pedestalMat, weightMat, numberMat, bubbleMat, standMat]) { const w = new T.Mesh(warmGeo, m); w.castShadow = true; warm.add(w); }
+  scene.add(warm);
+  const finishNow = meshAcc.material;
+  for (const f of Object.values(finishes)) { meshAcc.material = f; try { await renderer.compileAsync(scene, camera); } catch (e) {} }
+  meshAcc.material = finishNow;
+  await breathe();
+  // primer uso (uniforms + sombras) aquí, mientras carga, y no en el primer cuadro visible
+  phase = REDUCE ? 'idle' : 'in'; phaseStart = performance.now(); writeInstances(phaseStart);
+  meshMain.count = Math.max(1, meshMain.count); meshAcc.count = Math.max(1, meshAcc.count);
+  renderer.render(scene, camera);
+  scene.remove(warm); warmGeo.dispose();
+  await breathe();
+  // primera vez: se infla
+  phase = REDUCE ? 'idle' : 'in'; phaseStart = performance.now(); writeInstances(phaseStart);
   return { rebuild, recolor, setFinish, updateName: () => { updateName(); dirty = true; }, updateNumber, setRunning, png, thumb };
 }
 
@@ -1967,7 +1996,8 @@ function initScene(container, canvas) {
   camera.position.set(0, 0, 11);
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // 1.5 se ve igual de nítido en globos lisos y dibuja ~45% menos pixeles que 2 (pantallas retina y celulares)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(container.clientWidth, container.clientHeight, false);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.15;
@@ -1991,8 +2021,9 @@ function initScene(container, canvas) {
   const keyLight = new THREE.DirectionalLight(0xffffff, 1.4);
   keyLight.position.set(-6, 10, 8);
   keyLight.castShadow = true;
-  keyLight.shadow.mapSize.width = 2048;
-  keyLight.shadow.mapSize.height = 2048;
+  const shadowRes = window.innerWidth < 768 ? 1024 : 2048;
+  keyLight.shadow.mapSize.width = shadowRes;
+  keyLight.shadow.mapSize.height = shadowRes;
   keyLight.shadow.camera.near = 0.5;
   keyLight.shadow.camera.far = 30;
   keyLight.shadow.camera.left = -8;
@@ -2035,7 +2066,7 @@ function initScene(container, canvas) {
   const ballCount = isMobile ? 40 : 72;   // menos globos: el hero ahora tiene fotos y el móvil cuida rendimiento
 
   /* ---- globos ---- */
-  const sphereGeometry = new THREE.SphereGeometry(1, 48, 48);
+  const sphereGeometry = new THREE.SphereGeometry(1, 40, 28);   // de 48×48 a 40×28: igual de redondos, la mitad de triángulos (se dibujan 2 veces: sombra + imagen)
   const balls = [];
   for (let i = 0; i < ballCount; i++) {
     let radius = 0.33;
@@ -2372,10 +2403,16 @@ function initScene(container, canvas) {
     reducedPose = pose;
   };
 
-  /* ---- loop ---- */
+  /* ---- loop ----
+     la física avanza en pasos fijos de 1/60 s, sin importar los Hz de la pantalla:
+     en 120 Hz ya no corre al doble (ni gasta el doble), y si un cuadro llega tarde se pone al día
+     en vez de frenarse. Solo se dibuja cuando hubo un paso nuevo. */
+  const STEP = 1 / 60, MAX_STEPS = 4;
+  let acc = 0, lastTime = 0, halfTick = false;
   const simulateAndRender = () => {
     requestAnimationFrame(simulateAndRender);
     const time = clock.getElapsedTime();
+    const frameDt = Math.min(0.1, time - lastTime); lastTime = time;
     updateMouse3D();
 
     if (control.started && !localStarted) {
@@ -2394,7 +2431,16 @@ function initScene(container, canvas) {
     if (control.frozen) return;   // detrás del vidrio del catálogo: se queda el último cuadro (ya difuminado), sin gastar
 
     if (REDUCE) applyReducedPose(control.progress);
-    else step(time, control.progress, true);
+    else {
+      acc += frameDt;
+      if (control.lowPower && (halfTick = !halfTick)) return;   // un cuadro sí y otro no (la física se pone al día sola)
+      let n = 0;
+      // margen de 25%: en pantallas de 60 Hz el rAF llega con ±1 ms de variación; sin margen a veces
+      // saltaría un cuadro y daría dos pasos en el siguiente (justo el tirón que queremos evitar)
+      while (acc >= STEP * 0.75 && n < MAX_STEPS) { acc -= STEP; n++; step(time - acc, control.progress, true); }
+      if (n === MAX_STEPS) acc = 0;           // muy atrasado (pestaña en segundo plano, etc.): no intentar alcanzar
+      if (n === 0 && reportedReady) return;   // nada se movió: no volver a dibujar lo mismo
+    }
 
     renderer.render(scene, camera);
     if (!reportedReady) { reportedReady = true; onReady(); }
@@ -2414,6 +2460,9 @@ function initScene(container, canvas) {
     const minor = width === lastW && Math.abs(height - lastH) / lastH < 0.2;
     if (!minor) { assignHeartTargets(); lastW = width; lastH = height; }
     if (REDUCE && localStarted) reducedPose = -1;
+    // cambiar el tamaño borra el canvas: redibujar ya. Si no, en celular (la barra del navegador
+    // cambia el alto al hacer scroll) los globos pausados tras el catálogo quedaban en blanco.
+    renderer.render(scene, camera);
   };
   let lastW = container.clientWidth, lastH = container.clientHeight || 1;
   new ResizeObserver(handleResize).observe(container);
