@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balloons by Fer&amp;Mons · Decoración de eventos con globos</title>
+<meta name="description" content="Catálogo de arcos y columnas de globos, backdrops, flores y bouquets para cumpleaños, baby showers, bodas, XV años y bautizos. Elige tu decoración y cotiza por WhatsApp.">
+<meta name="theme-color" content="#FFF1F3">
+<link rel="canonical" href="./">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Balloons by Fer&amp;Mons · Decoración de eventos con globos">
+<meta property="og:description" content="Elige tu decoración en nuestro catálogo y cotiza por WhatsApp.">
+<meta property="og:image" content="img/og-ferymons.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Balloons by Fer&Mons",
+  "description": "Decoración de eventos con globos: arcos, columnas, backdrops, flores, centros de mesa, bouquets y decoraciones temáticas.",
+  "telephone": "+52 81 2353 5615",
+  "logo": "img/logo-fermons-transparente.png",
+  "image": "img/og-ferymons.jpg",
+  "sameAs": ["https://www.instagram.com/balloons_by_ferymons/"],
+  "founder": [{"@type": "Person", "name": "Fernanda"}, {"@type": "Person", "name": "Montserrat"}]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
+</script>
+<style>
+:root{
+  --font:"Raleway",system-ui,sans-serif;
+  --font-script:"Dancing Script",cursive;
+  --accent:#E8466A;
+  --accent-ink:#B8163A;          /* acento para texto pequeño sobre blanco (contraste AA) */
+  --accent-soft:#FF8FA3;
+  --ink:#1d0f13;
+  --ink-2:#4d3a40;               /* párrafos: nunca más claro que esto */
+  --line:rgba(29,15,19,0.12);
+  --ground:#FFF1F3;
+  --paper:#FFF9FA;
+  --dark:#1a0c10;
+  --wa:#25D366;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --ease-drawer:cubic-bezier(0.32,0.72,0,1);
+  --pad:20px;
+  --header-h:64px;
+  --fs-display:clamp(2.6rem, 6.4vw, 92px);
+  --fs-h2:clamp(2.2rem, 4.6vw, 64px);
+}
+@media (min-width:768px){ :root{ --pad:40px; --header-h:76px; } }
+@media (min-width:1200px){ :root{ --pad:56px; } }
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; width:100%; }
+html{ -webkit-text-size-adjust:100%; overflow-x:clip; }
+html.dlg-open{ overflow:hidden; }
+body{ overflow-x:clip; -webkit-font-smoothing:antialiased; color:var(--ink); background:var(--ground); font:500 16px/1.5 var(--font); -webkit-tap-highlight-color:transparent; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; cursor:pointer; }
+img{ display:block; max-width:100%; }
+::selection{ background:#FFC2CD; color:var(--ink); }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:10px; }
+.ico{ width:18px; height:18px; flex:none; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.h2{ font:500 var(--fs-h2)/1 var(--font); letter-spacing:-0.03em; margin:0; color:var(--ink); }
+.script{ font-family:var(--font-script); font-weight:700; color:var(--accent); letter-spacing:-0.01em; font-size:1.14em; line-height:.8; padding-right:.06em; }
+
+/* ---------- capas fijas ---------- */
+#bg{ position:fixed; inset:0; z-index:-10; background-color:var(--ground); transition:background-color 1s var(--ease-in-out); }
+#bg[data-stage="2"]{ background-color:#FFE3E8; }
+#stage{ position:fixed; inset:0; z-index:0; pointer-events:none; }
+#stage canvas{ display:block; width:100%; height:100%; }
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:50px; padding:0 24px; border:0; border-radius:999px;
+  background:var(--ink); color:#fff; font:600 16px/1 var(--font); white-space:nowrap;
+  transition:transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease;
+}
+.btn:active{ transform:scale(0.97); }
+.btn-light{ background:#fff; color:var(--ink); box-shadow:inset 0 0 0 1.5px var(--line); }
+.btn-wa .ico{ color:#1faa53; }
+.btn:not(.btn-light) .ico{ color:var(--accent-soft); }
+.btn-sm{ min-height:42px; padding:0 18px; font-size:15px; }
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{ background:#3a1f26; }
+  .btn-light:hover{ background:#FFF1F3; }
+}
+
+/* ---------- header ---------- */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:30; height:calc(var(--header-h) + env(safe-area-inset-top)); padding:env(safe-area-inset-top) var(--pad) 0;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  transition:background-color 250ms ease, box-shadow 250ms ease;
+}
+.site-header.scrolled{
+  background:rgba(255,246,248,0.78);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4); backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 1px 0 rgba(29,15,19,0.06);
+}
+.site-header.on-dark{ background:rgba(26,12,16,0.82); color:#fff; box-shadow:none; }
+.brand img{ height:46px; width:auto; }
+@media (min-width:768px){ .brand img{ height:60px; } }
+.nav{ display:none; gap:34px; font:600 15px/1 var(--font); }
+.nav a{ padding:10px 0; transition:opacity 150ms ease; }
+@media (hover:hover) and (pointer:fine){ .nav a:hover{ opacity:.6; } }
+@media (min-width:900px){ .nav{ display:flex; position:absolute; left:50%; transform:translateX(-50%); } }
+
+/* ---------- 1 · hero ---------- */
+main{ position:relative; z-index:10; }
+.hero{
+  position:relative; min-height:100vh; min-height:100svh; padding:calc(var(--header-h) + 16px) var(--pad) 40px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+}
+.hero-logo{ width:clamp(150px, 16vw, 250px); height:auto; margin-bottom:clamp(8px, 2vh, 24px); filter:drop-shadow(0 0 14px rgba(255,255,255,0.95)) drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+.hero h1{ font:500 clamp(3.4rem, 10.2vw, 220px)/0.9 var(--font); letter-spacing:-0.05em; margin:0; max-width:100%; text-shadow:0 0 3px rgba(255,255,255,0.9), 0 2px 36px rgba(255,241,243,0.95); }
+.hero h1 .script{ font-size:1.12em; color:#4A0E26; text-shadow:1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 2px 0 #fff, 0 2px 28px rgba(255,255,255,0.95); }   /* vino oscuro: contrasta con globos rosas, rojos y blancos */
+.hero p{ margin:clamp(16px, 3vh, 32px) 0 0; padding:6px 16px; border-radius:999px; background:rgba(255,246,248,0.82); font:600 18px/1.45 var(--font); color:var(--ink); max-width:34rem; }
+@media (min-width:768px){ .hero p{ font-size:21px; } }
+.hero-cta{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:28px; }
+@media (max-width:420px){ .hero-cta .btn{ padding:0 18px; } }
+/* el logo del header aparece al bajar (arriba ya está el grande del hero) */
+.brand{ opacity:0; transform:translateY(-6px); pointer-events:none; transition:opacity 250ms var(--ease-out), transform 250ms var(--ease-out); }
+.site-header.scrolled .brand{ opacity:1; transform:none; pointer-events:auto; }
+
+/* ---------- 2 · catálogo ---------- */
+.catalog{ position:relative; }
+.cat-head{ padding:0 var(--pad); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:12px 32px; }
+.cat-head p{ margin:0; max-width:24rem; font:500 17px/1.45 var(--font); color:var(--ink-2); }
+.chips-bar{ position:sticky; top:calc(var(--header-h) + env(safe-area-inset-top)); z-index:5; margin-top:28px; padding:10px 0; background:rgba(255,249,250,0.92); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+.chips{ display:flex; gap:8px; overflow-x:auto; padding:2px var(--pad); scroll-padding-inline:var(--pad); scroll-snap-type:x proximity; scrollbar-width:none; }
+.chips::-webkit-scrollbar{ display:none; }
+.chip{ flex:none; scroll-snap-align:start; display:inline-flex; align-items:center; gap:7px; min-height:42px; padding:0 16px; border-radius:999px; border:0; background:#fff; box-shadow:inset 0 0 0 1.5px var(--line);
+  font:600 15px/1 var(--font); color:var(--ink); white-space:nowrap; transition:background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out); }
+.chip small{ font:600 13px/1 var(--font); color:var(--ink-2); transition:color 200ms ease; }
+.chip:active{ transform:scale(0.96); }
+.chip[aria-pressed="true"]{ background:var(--ink); color:#fff; box-shadow:none; }
+.chip[aria-pressed="true"] small{ color:#FFC2CD; }
+@media (hover:hover) and (pointer:fine){ .chip:not([aria-pressed="true"]):hover{ background:#FFF1F3; } }
+.grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 12px; padding:20px var(--pad) 0; }
+@media (min-width:760px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px 20px; } }
+@media (min-width:1200px){ .grid{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+.p-card{ position:relative; }
+.p-card[hidden]{ display:none; }
+.p-open{ display:block; width:100%; padding:0; border:0; background:none; text-align:left; border-radius:20px; }
+.p-img{ display:block; overflow:hidden; border-radius:20px; background:#F6E3E7; }
+.p-img img{ width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; transition:transform 600ms var(--ease-out); }
+.p-open:active .p-img img{ transform:scale(0.98); }
+@media (hover:hover) and (pointer:fine){ .p-open:hover .p-img img{ transform:scale(1.04); } }
+.p-name{ display:block; margin-top:12px; font:600 16px/1.25 var(--font); color:var(--ink); }
+@media (min-width:760px){ .p-name{ font-size:17px; } }
+.p-meta{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:2px 10px; margin-top:4px; font:500 14px/1.3 var(--font); color:var(--ink-2); }
+.p-meta b{ font-weight:700; color:var(--accent-ink); }
+.p-add{ position:absolute; top:10px; right:10px; width:40px; height:40px; border:0; border-radius:50%; display:grid; place-items:center; background:#fff; color:var(--ink);
+  box-shadow:0 6px 16px -6px rgba(29,15,19,0.35); transition:transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease; }
+.p-add:active{ transform:scale(0.9); }
+.p-add .i-check{ display:none; }
+.p-add[aria-pressed="true"]{ background:var(--accent); color:#fff; }
+.p-add[aria-pressed="true"] .i-plus{ display:none; }
+.p-add[aria-pressed="true"] .i-check{ display:block; }
+
+/* ---------- 3 · corazón ---------- */
+.heart{ position:relative; min-height:82vh; min-height:82svh; padding:calc(var(--header-h) + 16px) var(--pad) 8px;
+  display:flex; align-items:center; justify-content:center; text-align:center; }
+.heart h2{ margin:0; font:500 clamp(2.8rem, 7.4vw, 140px)/0.95 var(--font); letter-spacing:-0.045em; color:var(--ink);
+  text-shadow:0 0 4px #fff, 0 0 2px #fff, 0 4px 40px rgba(255,255,255,0.95); }
+.heart h2 span{ display:block; margin-top:0.08em; font-family:var(--font-script); font-weight:700; font-size:1.12em; letter-spacing:-0.01em; color:#4A0E26; text-shadow:1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 2px 0 #fff, 0 2px 28px rgba(255,255,255,0.95); }
+
+/* ---------- 4 · cómo funciona ---------- */
+.how{ text-align:center; padding-left:var(--pad); padding-right:var(--pad); }
+.steps{ list-style:none; margin:44px auto 0; padding:0; max-width:1000px; display:grid; grid-template-columns:1fr; gap:16px; }
+@media (min-width:760px){ .steps{ grid-template-columns:repeat(3,1fr); gap:20px; } }
+.steps li{ display:flex; align-items:center; gap:16px; padding:18px 20px; border-radius:24px; background:#fff; text-align:left; font:600 18px/1.3 var(--font); }
+@media (min-width:760px){ .steps li{ flex-direction:column; text-align:center; padding:32px 24px; gap:18px; font-size:19px; } }
+.step-ico{ width:56px; height:56px; flex:none; border-radius:50%; display:grid; place-items:center; background:#FFE3E8; color:var(--accent-ink); }
+.step-ico .ico{ width:26px; height:26px; }
+.how .btn{ margin-top:40px; min-height:58px; padding:0 32px; font-size:17px; }
+
+/* ---------- footer ---------- */
+.site-footer{ position:relative; z-index:10; background:var(--dark); color:#fff; overflow:hidden; border-radius:36px 36px 0 0; }
+@media (min-width:768px){ .site-footer{ border-radius:48px 48px 0 0; } }
+.marquee{ padding:24px 0; overflow:hidden; background:#24131a; }
+.marquee-track{ display:inline-flex; white-space:nowrap; font:500 clamp(28px, 4.6vw, 56px)/1.05 var(--font); letter-spacing:-0.03em; }
+.marquee-track span{ display:inline-flex; align-items:center; }
+.marquee-track span::after{ content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); margin:0 30px; }
+.f-body{ padding:72px var(--pad) calc(28px + env(safe-area-inset-bottom)); }
+.f-body .h2{ color:#fff; }
+.f-cta{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:28px; }
+.f-actions{ display:flex; flex-wrap:wrap; gap:12px; }
+.f-actions .btn{ background:#fff; color:var(--ink); }
+.f-actions .btn-ig{ background:rgba(255,255,255,0.1); color:#fff; }
+@media (hover:hover) and (pointer:fine){ .f-actions .btn:hover{ background:#FFE3E8; } .f-actions .btn-ig:hover{ background:rgba(255,255,255,0.18); } }
+.f-name{ display:block; margin:64px 0 0; font:700 clamp(5rem, 22vw, 330px)/0.9 var(--font-script); color:#fff; white-space:nowrap; }
+.f-name span{ color:var(--accent-soft); }
+.f-bottom{ margin-top:56px; font:500 14px/1.4 var(--font); color:rgba(255,255,255,0.72); }
+
+/* ---------- flotantes: WhatsApp / Mi cotización ---------- */
+.fab{ position:fixed; z-index:40; right:16px; bottom:calc(16px + env(safe-area-inset-bottom));
+  opacity:0; transform:translateY(12px) scale(0.92); pointer-events:none; transition:opacity 150ms ease, transform 150ms var(--ease-out); }
+.fab.show{ opacity:1; transform:none; pointer-events:auto; transition-duration:250ms; }
+@media (min-width:768px){ .fab{ right:28px; bottom:28px; } }
+.wa-float{ width:58px; height:58px; border-radius:50%; background:var(--wa); color:#fff; display:grid; place-items:center; box-shadow:0 10px 24px -8px rgba(18,140,70,0.55); }
+.wa-float svg{ width:28px; height:28px; }
+.qpill{ display:inline-flex; align-items:center; gap:10px; min-height:56px; padding:0 22px 0 18px; border:0; border-radius:999px; background:var(--ink); color:#fff; font:600 16px/1 var(--font); box-shadow:0 14px 30px -10px rgba(29,15,19,0.55); }
+.qpill .ico{ color:var(--accent-soft); }
+.qpill b{ display:inline-grid; place-items:center; min-width:26px; height:26px; padding:0 7px; border-radius:99px; background:var(--accent); font:700 14px/1 var(--font); }
+.fab:active{ transform:scale(0.96); }
+.bump{ animation:bump 320ms var(--ease-out); }
+@keyframes bump{ 40%{ transform:scale(1.08); } }
+
+/* ---------- diálogos: producto y cotización ---------- */
+dialog{ border:0; padding:0; color:var(--ink); background:#fff; overscroll-behavior:contain; }
+dialog::backdrop{ background:rgba(29,15,19,0.5); opacity:0; transition:opacity 250ms ease; }
+dialog.is-in::backdrop{ opacity:1; }
+.x{ position:absolute; top:12px; right:12px; z-index:3; width:44px; height:44px; border:0; border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,0.92); color:var(--ink);
+  box-shadow:0 4px 14px -6px rgba(29,15,19,0.4); transition:transform 160ms var(--ease-out); }
+.x:active{ transform:scale(0.92); }
+/* modal de producto: centrado en desktop, hoja inferior en celular */
+.pm-dlg{ width:min(980px, calc(100% - 48px)); max-width:none; max-height:min(88vh, 720px); border-radius:28px; overflow:hidden;
+  opacity:0; transform:translateY(14px) scale(0.97); transition:opacity 220ms ease, transform 280ms var(--ease-out); }
+.pm-dlg.is-in{ opacity:1; transform:none; }
+.pm{ display:grid; grid-template-columns:1.05fr 1fr; max-height:inherit; }
+.pm-media{ position:relative; background:#F6E3E7; min-height:0; }
+.pm-track{ display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; }
+.pm-track::-webkit-scrollbar{ display:none; }
+.pm-track img{ flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:center; }
+.pm-dots{ position:absolute; left:0; right:0; bottom:14px; display:flex; justify-content:center; gap:6px; }
+.pm-dots button{ width:28px; height:28px; border:0; padding:0; background:none; display:grid; place-items:center; }
+.pm-dots button::after{ content:""; width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.6); box-shadow:0 0 0 1px rgba(29,15,19,0.15); transition:background-color 200ms ease, transform 200ms var(--ease-out); }
+.pm-dots button[aria-current="true"]::after{ background:#fff; transform:scale(1.25); }
+.pm-nav{ position:absolute; top:50%; translate:0 -50%; width:44px; height:44px; border:0; border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,0.92); transition:transform 160ms var(--ease-out); }
+.pm-nav:active{ transform:scale(0.92); }
+.pm-prev{ left:12px; } .pm-next{ right:12px; }
+.pm-body{ padding:36px 32px 28px; overflow-y:auto; display:flex; flex-direction:column; }
+.pm-cat{ margin:0; font:600 14px/1.3 var(--font); color:var(--accent-ink); }
+.pm-body h3{ margin:8px 0 0; font:600 clamp(26px, 2.6vw, 34px)/1.1 var(--font); letter-spacing:-0.02em; padding-right:40px; }
+.pm-desc{ margin:14px 0 0; font:500 16px/1.5 var(--font); color:var(--ink-2); }
+.pm-body h4{ margin:22px 0 8px; font:700 15px/1.3 var(--font); }
+.pm-incl{ margin:0; padding:0; list-style:none; display:grid; gap:8px; }
+.pm-incl li{ display:flex; gap:10px; font:500 15px/1.4 var(--font); color:var(--ink-2); }
+.pm-incl .ico{ width:18px; height:18px; color:var(--accent); margin-top:1px; }
+.pm-price{ margin:22px 0 0; font:700 18px/1.3 var(--font); }
+.pm-actions{ margin-top:auto; padding-top:24px; display:grid; gap:10px; }
+.pm-actions .btn{ width:100%; }
+@media (max-width:759px){
+  .pm-dlg{ width:100%; max-width:100%; margin:auto 0 0; max-height:94svh; border-radius:26px 26px 0 0; transform:translateY(100%); opacity:1; transition:transform 420ms var(--ease-drawer); }
+  .pm{ grid-template-columns:1fr; max-height:94svh; overflow-y:auto; }
+  .pm-media{ height:min(58svh, 112vw); }
+  .pm-body{ padding:24px var(--pad) calc(20px + env(safe-area-inset-bottom)); overflow:visible; }
+  .pm-actions{ position:sticky; bottom:0; background:#fff; padding:14px 0 calc(6px + env(safe-area-inset-bottom)); margin:16px calc(var(--pad) * -1) 0; padding-left:var(--pad); padding-right:var(--pad); box-shadow:0 -10px 20px -14px rgba(29,15,19,0.25); }
+  .pm-nav{ display:none; }
+}
+/* cotización: panel lateral en desktop, hoja inferior en celular */
+.q-dlg{ margin:0 0 0 auto; width:min(440px, 100%); max-width:none; height:100dvh; max-height:100dvh; border-radius:28px 0 0 28px;
+  transform:translateX(100%); transition:transform 420ms var(--ease-drawer); }
+.q-dlg.is-in{ transform:none; }
+.q{ display:flex; flex-direction:column; height:100%; }
+.q-head{ padding:28px 24px 8px; }
+.q-head h3{ margin:0; font:600 28px/1.1 var(--font); letter-spacing:-0.02em; }
+.q-head p{ margin:6px 0 0; font:500 15px/1.4 var(--font); color:var(--ink-2); }
+.q-list{ list-style:none; margin:0; padding:8px 24px; overflow-y:auto; flex:1; display:grid; align-content:start; gap:10px; }
+.q-list li{ display:grid; grid-template-columns:60px 1fr auto; gap:14px; align-items:center; }
+.q-list img{ width:60px; height:60px; object-fit:cover; border-radius:14px; }
+.q-list strong{ display:block; font:600 15px/1.3 var(--font); }
+.q-list span{ display:block; font:500 14px/1.3 var(--font); color:var(--ink-2); }
+.q-rm{ min-height:40px; padding:0 12px; border:0; border-radius:999px; background:#FFF1F3; font:600 14px/1 var(--font); color:var(--accent-ink); transition:transform 160ms var(--ease-out); }
+.q-rm:active{ transform:scale(0.95); }
+.q-empty{ padding:24px; font:500 16px/1.5 var(--font); color:var(--ink-2); }
+.q-form{ padding:16px 24px calc(20px + env(safe-area-inset-bottom)); display:grid; gap:12px; box-shadow:0 -1px 0 var(--line); }
+.q-form label{ display:grid; gap:6px; font:600 14px/1.3 var(--font); }
+.q-form input, .q-form textarea{ font:500 16px/1.4 var(--font); color:var(--ink); padding:12px 14px; border-radius:14px; border:1.5px solid var(--line); background:#fff; width:100%; }
+.q-form textarea{ resize:vertical; min-height:72px; }
+.q-form input:focus, .q-form textarea:focus{ outline:none; border-color:var(--accent); }
+@media (max-width:759px){
+  .q-dlg{ margin:auto 0 0; width:100%; height:auto; max-height:92svh; border-radius:26px 26px 0 0; transform:translateY(100%); }
+}
+
+/* ---------- papeles: secciones con fondo propio, siempre encima del canvas ---------- */
+/* el catálogo va sobre vidrio esmerilado: los globos se ven difuminados detrás y los bordes se desvanecen (sin corte duro) */
+.paper{ position:relative; background:rgba(255,248,250,0.68); -webkit-backdrop-filter:blur(26px) saturate(1.25); backdrop-filter:blur(26px) saturate(1.25);
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+  mask-image:linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%); }
+@media (max-width:759px){ .paper{ background:rgba(255,248,250,0.84); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+  mask-image:linear-gradient(to bottom, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%); } }
+.paper-b{ position:relative; }
+.paper-b > .block:first-child{ padding-top:24px; }
+@media (min-width:768px){ .paper-b > .block:first-child{ padding-top:40px; } }
+.paper-b > .block:last-child{ padding-bottom:110px; }
+@media (min-width:768px){ .paper-b > .block:last-child{ padding-bottom:150px; } }
+.how .h2{ position:relative; display:inline-block; isolation:isolate; }
+.how .h2::before{ content:""; position:absolute; inset:-50px -110px; z-index:-1; pointer-events:none;
+  background:radial-gradient(closest-side, rgba(255,227,232,0.96) 50%, rgba(255,227,232,0) 100%); }
+.block{ padding-top:84px; }
+@media (min-width:768px){ .block{ padding-top:128px; } }
+.paper > .block:first-child{ padding-top:96px; }
+@media (min-width:768px){ .paper > .block:first-child{ padding-top:140px; } }
+.paper > .block:last-child{ padding-bottom:96px; }
+@media (min-width:768px){ .paper > .block:last-child{ padding-bottom:136px; } }
+.block-head{ padding:0 var(--pad); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:12px 32px; margin-bottom:32px; }
+.block-head p{ margin:0; max-width:26rem; font:500 17px/1.45 var(--font); color:var(--ink-2); }
+
+/* Eventos: tira compacta dentro del catálogo */
+.events{ display:grid; grid-auto-flow:column; grid-auto-columns:minmax(150px, 1fr); gap:10px; overflow-x:auto; margin-top:24px; padding:2px var(--pad) 4px; scroll-snap-type:x proximity; scroll-padding-inline:var(--pad); scrollbar-width:none; }
+.events::-webkit-scrollbar{ display:none; }
+.ev{ position:relative; display:block; padding:0; border:0; border-radius:18px; overflow:hidden; height:96px; background:#F6E3E7; text-align:left; color:#fff; scroll-snap-align:start; transition:transform 160ms var(--ease-out); }
+@media (min-width:900px){ .ev{ height:116px; } }
+.ev:active{ transform:scale(0.97); }
+.ev img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 600ms var(--ease-out); }
+.ev::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(29,15,19,0.78) 0%, rgba(29,15,19,0.25) 55%, rgba(29,15,19,0.05) 100%); }
+.ev-txt{ position:absolute; left:12px; right:12px; bottom:10px; z-index:1; }
+.ev-txt strong{ display:block; font:600 16px/1.15 var(--font); }
+.ev-txt span{ display:inline-flex; align-items:center; gap:3px; margin-top:3px; font:600 13px/1 var(--font); color:#FFE3E8; }
+.ev-txt .ico{ width:14px; height:14px; }
+@media (hover:hover) and (pointer:fine){ .ev:hover img{ transform:scale(1.06); } }
+.more{ display:flex; justify-content:center; padding:32px var(--pad) 0; }
+.more .btn{ min-width:240px; }
+.block.solo{ padding-bottom:24px; }
+
+/* Chips de opción (radio/checkbox con look de botón) */
+.opts{ display:flex; flex-wrap:wrap; gap:8px; }
+.opt{ position:relative; display:block; }
+.opt input{ position:absolute; inset:0; width:100%; height:100%; opacity:0; margin:0; cursor:pointer; z-index:1; }
+.opt > span{ display:inline-flex; align-items:center; gap:9px; min-height:44px; padding:0 16px; border-radius:999px; background:#fff; box-shadow:inset 0 0 0 1.5px var(--line); font:600 15px/1 var(--font); white-space:nowrap;
+  transition:background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out); }
+.opt input:checked + span{ background:var(--ink); color:#fff; box-shadow:none; }
+.opt input:focus-visible + span{ outline:2px solid var(--accent); outline-offset:3px; }
+.opt input:active + span{ transform:scale(0.96); }
+@media (hover:hover) and (pointer:fine){ .opt input:not(:checked):hover + span{ background:#FFF1F3; } }
+.sw{ display:inline-flex; }
+.sw i{ width:18px; height:18px; border-radius:50%; margin-left:-6px; box-shadow:0 0 0 2px #fff, inset 0 0 0 1px rgba(29,15,19,0.18); }
+.sw i:first-child{ margin-left:0; }
+.opt input:checked + span .sw i{ box-shadow:0 0 0 2px var(--ink), inset 0 0 0 1px rgba(255,255,255,0.25); }
+
+/* Diseña tu decoración (3D) */
+.cfg{ display:grid; grid-template-columns:minmax(0,1fr); gap:16px; padding:0 var(--pad); align-items:start; }
+.cfg-stage{ min-width:0; }
+@media (min-width:760px){ .cfg{ grid-template-columns:minmax(0,1fr) 320px; gap:16px; } }
+@media (min-width:1100px){ .cfg{ grid-template-columns:minmax(0,1fr) 380px; gap:24px; } }
+.cfg-types{ flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin:0 calc(var(--pad) * -1) 12px; padding:2px var(--pad); scroll-padding-inline:var(--pad); }
+.cfg-types::-webkit-scrollbar{ display:none; }
+.cfg-types .opt{ flex:none; }
+@media (min-width:760px){ .cfg-types{ flex-wrap:wrap; margin:0 0 14px; padding:2px 0; } }
+.cfg-view{ position:relative; height:42vh; height:42svh; min-height:260px; max-height:420px; border-radius:28px; overflow:hidden;
+  background:linear-gradient(to top, #FFE3EA 0%, #FFEFF3 30%, rgba(255,239,243,0) 46%), radial-gradient(ellipse 85% 75% at 50% 30%, #ffffff 0%, #FFF6F8 55%, #FFEAF0 100%); }
+@media (min-width:760px){ .cfg-view{ height:calc(100vh - var(--header-h) - 200px); min-height:340px; max-height:none; } }
+/* "Diseña tu decoración": título, tipos, vista 3D y panel caben juntos en una pantalla */
+/* en pantallas grandes la escena no se come todo: ancho tope y altura igual al panel */
+#disena .block-head, #disena .cfg{ max-width:1300px; margin-inline:auto; box-sizing:border-box; }
+@media (min-width:760px){ .cfg-view{ max-height:600px; } }
+#disena.block.solo{ padding-top:22px; }
+#disena .block-head{ margin-bottom:12px; align-items:center; }
+#disena .block-head .h2{ font-size:clamp(2rem, 3.6vw, 52px); }
+@media (min-width:760px) and (max-height:800px){
+  #disena.block.solo{ padding-top:14px; }
+  #disena .block-head{ margin-bottom:8px; }
+  #disena .block-head .h2{ font-size:32px; }
+  #disena .block-head p{ display:none; }
+  .cfg-view{ height:calc(100vh - var(--header-h) - 146px); }
+}
+/* celular: la vista 3D se queda fija arriba mientras cambias opciones, para ver cada cambio al instante */
+@media (max-width:759px){
+  #disena{ background:var(--ground); }
+  .cfg-stage{ position:sticky; top:calc(var(--header-h) + env(safe-area-inset-top)); z-index:3; background:var(--ground); padding:8px 0 10px; margin-top:-8px; }
+  .cfg-note{ display:none; }
+}
+.cfg-view canvas{ display:block; width:100%; height:100%; cursor:grab; }
+.cfg-view canvas:active{ cursor:grabbing; }
+.cfg-loading{ position:absolute; inset:0; display:grid; place-items:center; padding:24px; text-align:center; font:600 16px/1.4 var(--font); color:var(--ink-2); transition:opacity 300ms ease; pointer-events:none; }
+.cfg-view.ready .cfg-loading{ opacity:0; }
+.cfg-hint{ position:absolute; left:14px; bottom:14px; margin:0; display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:0 14px; border-radius:999px; background:rgba(255,255,255,0.92); font:600 14px/1 var(--font); color:var(--ink); transition:opacity 300ms ease; pointer-events:none; }
+.cfg-hint .touch-only{ display:none; }
+@media (hover:none){ .cfg-hint .touch-only{ display:inline; } .cfg-hint .mouse-only{ display:none; } }
+.cfg-view.touched .cfg-hint, .cfg-view:not(.ready) .cfg-hint{ opacity:0; }
+.cfg-note{ margin:10px 4px 0; font:500 14px/1.4 var(--font); color:var(--ink-2); }
+.cfg-panel{ background:#fff; border-radius:28px; padding:14px; display:flex; flex-direction:column; gap:14px; min-width:0; }
+@media (min-width:760px){ .cfg-panel{ position:sticky; top:calc(var(--header-h) + 16px); max-height:calc(100vh - var(--header-h) - 142px); margin-top:0; padding:14px; } }
+@media (min-width:760px) and (max-height:800px){ .cfg-panel{ max-height:calc(100vh - var(--header-h) - 88px); } }
+.cfg-secs{ flex:0 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; padding:2px; }
+.cfg-tabs{ display:flex; gap:4px; padding:4px; border-radius:999px; background:#FFF1F3; }
+.cfg-tabs button{ flex:1; min-height:44px; padding:0 8px; border:0; border-radius:999px; background:none; font:600 14px/1.1 var(--font); color:var(--ink-2); transition:background-color 200ms ease, color 200ms ease; }
+.cfg-tabs button[aria-selected="true"]{ background:#fff; color:var(--ink); box-shadow:0 2px 8px -4px rgba(29,15,19,0.3); }
+
+.cfg-sec{ border:0; margin:0; padding:0; min-width:0; min-inline-size:0; width:100%; }
+.cfg-sec > * + *{ margin-top:12px; }
+.cfg-sec:not(.on){ display:none; }
+.cfg-sec legend{ padding:0; margin-bottom:12px; font:700 16px/1.3 var(--font); }
+.cfg-sub{ margin-top:18px !important; margin-bottom:0; font:700 15px/1.3 var(--font); }
+.cfg-roles{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.cfg-roles button{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; min-width:0; min-height:58px; padding:6px 4px; border:0; border-radius:14px; background:#fff; box-shadow:inset 0 0 0 1.5px var(--line);
+  font:600 13px/1.1 var(--font); color:var(--ink); text-align:center; overflow-wrap:anywhere; transition:box-shadow 150ms ease, transform 160ms var(--ease-out); }
+.cfg-roles button:active{ transform:scale(0.97); }
+.cfg-roles button[aria-checked="true"]{ box-shadow:inset 0 0 0 2px var(--ink); background:#FFF7F9; }
+.cfg-roles i{ width:22px; height:22px; flex:none; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(29,15,19,0.2); }
+.cfg-pick{ margin:10px 0 0 !important; font:500 14px/1.3 var(--font); color:var(--ink-2); }
+.cfg-pick b{ color:var(--ink); }
+.cfg-swatches{ display:grid; grid-template-columns:repeat(auto-fill, minmax(40px, 1fr)); gap:8px; }
+.cfg-swatches > *{ position:relative; display:block; width:100%; aspect-ratio:1; min-height:40px; border:0; padding:0; border-radius:50%; cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(29,15,19,0.18); transition:transform 160ms var(--ease-out), box-shadow 150ms ease; }
+.cfg-swatches > *:active{ transform:scale(0.9); }
+.cfg-swatches [aria-pressed="true"]{ box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--ink); }
+.cfg-swatches .other{ background:conic-gradient(#f94144, #f9c74f, #90be6d, #43aa8b, #577590, #c8a8f0, #f94144); }
+.cfg-swatches .other input{ position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; }
+@media (hover:hover) and (pointer:fine){ .cfg-swatches > *:hover{ transform:scale(1.08); } }
+.cfg-input{ display:block; width:100%; min-height:48px; font:500 16px/1.4 var(--font); color:var(--ink); padding:12px 14px; border-radius:14px; border:1.5px solid var(--line); background:#fff; }
+.cfg-input:focus{ outline:none; border-color:var(--accent); }
+.cfg-step + .cfg-step{ margin-top:16px; }
+.cfg-step h3{ margin:0 0 10px; font:700 16px/1.3 var(--font); color:var(--ink); }
+.cfg-step h3 small{ font-weight:500; color:var(--ink-2); }
+/* paletas: tarjetas grandes de 2 en 2 */
+.pal-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.pal-grid .opt > span{ display:flex; flex-direction:column; justify-content:center; width:100%; gap:5px; min-height:58px; padding:6px 4px; border-radius:16px; white-space:normal; line-height:1.1; font-size:13px; text-align:center; }
+.pal-grid .sw i{ width:20px; height:20px; margin-left:-7px; }
+.pal-grid .sw i:first-child{ margin-left:0; }
+/* colores propios: escondidos hasta que se piden */
+.cfg-more{ margin-top:10px; border-radius:16px; background:#FFF6F8; padding:0 12px; }
+.cfg-more summary{ list-style:none; cursor:pointer; min-height:46px; display:flex; align-items:center; justify-content:space-between; gap:10px; font:600 14px/1.2 var(--font); color:var(--ink); }
+.cfg-more summary::-webkit-details-marker{ display:none; }
+.cfg-more summary::after{ content:"+"; font:600 22px/1 var(--font); color:var(--accent-ink); transition:transform 200ms var(--ease-out); }
+.cfg-more[open] summary::after{ transform:rotate(45deg); }
+.cfg-more[open]{ padding-bottom:14px; }
+.cfg-more .cfg-swatches{ margin-top:10px; }
+.cfg-row{ display:flex; gap:8px; }
+.cfg-row .cfg-input{ flex:1; min-width:0; }
+.cfg-row .num{ flex:0 0 108px; }
+.opts-sm{ margin-top:8px; }
+.opts-sm .opt > span{ padding:0 14px; font-size:14px; }
+/* tamaño: control segmentado */
+.seg{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; padding:4px; border-radius:999px; background:#FFF1F3; }
+.seg .opt > span{ display:flex; width:100%; justify-content:center; background:transparent; box-shadow:none; }
+.seg .opt input:checked + span{ background:var(--ink); color:#fff; }
+.cfg-step-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+.cfg-step-head h3{ margin:0 !important; }
+.cfg-reset{ display:inline-flex; align-items:center; gap:6px; min-height:40px; margin-top:0; padding:0 4px; border:0; background:none; font:600 14px/1 var(--font); color:var(--ink-2); }
+.cfg-reset .ico{ width:16px; height:16px; }
+@media (hover:hover) and (pointer:fine){ .cfg-reset:hover{ color:var(--ink); } }
+.cfg-actions{ display:grid; gap:8px; min-width:0; }
+.cfg-actions-2{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; }
+.cfg-actions .btn{ width:100%; min-width:0; min-height:46px; padding:6px 10px; font-size:14px; line-height:1.15; white-space:normal; text-align:center; }
+/* pantallas bajitas (laptops): todo el panel cabe sin scroll */
+@media (min-width:760px) and (max-height:800px){
+  .cfg-panel{ padding:12px; gap:10px; }
+  .cfg-step + .cfg-step{ margin-top:10px; }
+  .cfg-step h3{ margin-bottom:6px; font-size:15px; }
+  .pal-grid .opt > span{ min-height:48px; gap:3px; }
+  .cfg-more{ margin-top:6px; }
+  .cfg-more summary{ min-height:40px; }
+  .cfg-input{ min-height:44px; padding:10px 12px; }
+  .opts-sm{ margin-top:6px; }
+  .cfg-actions .btn{ min-height:44px; }
+}
+@media (min-width:760px) and (max-height:720px){
+  .cfg-panel{ padding:10px 12px; gap:8px; }
+  .cfg-step + .cfg-step{ margin-top:6px; }
+  .cfg-step h3{ margin-bottom:4px; font-size:14px; }
+  .pal-grid .opt > span{ min-height:42px; }
+  .cfg-more summary{ min-height:36px; }
+  .cfg-input{ min-height:42px; padding:8px 12px; }
+  .cfg-reset{ min-height:34px; }
+  .cfg-actions .btn{ min-height:42px; }
+}
+@media (max-width:400px){ .cfg-actions-2{ grid-template-columns:1fr; } }
+
+/* Preguntas frecuentes */
+.faq{ max-width:860px; margin:0 auto; padding:0 var(--pad); display:grid; gap:10px; }
+.faq details{ background:#fff; border-radius:20px; padding:0 20px; }
+.faq summary{ list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; min-height:64px; font:600 17px/1.3 var(--font); }
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary .ico{ color:var(--accent-ink); transition:transform 200ms var(--ease-out); }
+.faq details[open] summary .ico{ transform:rotate(45deg); }
+.faq details p{ margin:0; padding:0 0 20px; font:500 16px/1.5 var(--font); color:var(--ink-2); }
+
+/* ---------- movimiento: los estados ocultos solo existen si el usuario acepta movimiento ---------- */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity 650ms var(--ease-out), transform 650ms var(--ease-out); transition-delay:var(--d,0ms); }
+  .reveal.in{ opacity:1; transform:none; }
+  .load-in{ animation:loadIn 750ms var(--ease-out) both; animation-delay:var(--d,0ms); }
+  .marquee-track{ animation:marquee 30s linear infinite; }
+}
+@keyframes loadIn{ from{ opacity:0; transform:translateY(16px); } }
+@keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+@media (prefers-reduced-motion: reduce){
+  .pm-dlg, .q-dlg, dialog::backdrop{ transition:opacity 150ms ease !important; transform:none !important; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+  <symbol id="i-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 12.586 19 19"/><path d="M3.688 3.037a.497.497 0 0 0-.651.651l6.5 15.999a.501.501 0 0 0 .947-.062l1.569-6.083a2 2 0 0 1 1.448-1.479l6.124-1.579a.5.5 0 0 0 .063-.947z"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+</svg>
+
+<div id="bg" data-stage="0" aria-hidden="true"></div>
+<div id="stage" aria-hidden="true"><canvas id="scene"></canvas></div>
+
+<header class="site-header" id="header">
+  <a href="#inicio" class="brand" aria-label="Balloons by Fer&amp;Mons, inicio">
+    <img src="img/logo-fermons-transparente.webp" width="591" height="412" alt="Balloons by Fer&amp;Mons">
+  </a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#disena">Diseña en 3D</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-sm wa-link" href="https://wa.me/528123535615" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Cotizar</a>
+</header>
+
+<main>
+  <!-- 1 · HERO -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <img class="hero-logo load-in" src="img/logo-fermons-transparente.webp" width="591" height="412" alt="Balloons by Fer&amp;Mons" fetchpriority="high">
+    <h1 class="load-in" id="hero-title" style="--d:80ms">Globos que hacen <span class="script">fiesta.</span></h1>
+    <p class="load-in" style="--d:160ms">Arcos, flores y bouquets de globos para tu fiesta, hechos a mano.</p>
+    <div class="hero-cta load-in" style="--d:220ms">
+      <a class="btn" href="#catalogo">Ver catálogo<svg class="ico"><use href="#i-down"/></svg></a>
+      <a class="btn btn-light btn-wa wa-link" href="https://wa.me/528123535615" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
+    </div>
+  </section>
+
+  <div class="paper" id="paper-a">
+  <!-- 3 · CATÁLOGO -->
+  <section class="block catalog" id="catalogo" aria-labelledby="cat-title">
+    <div class="cat-head">
+      <h2 class="h2 reveal" id="cat-title">Elige tu decoración.</h2>
+      <p class="reveal" style="--d:70ms">Toca una foto para ver qué incluye y agrégala a tu cotización.</p>
+    </div>
+    <div class="events" id="events" aria-label="Ideas por evento"></div>
+    <div class="chips-bar">
+      <div class="chips" id="chips" role="toolbar" aria-label="Filtrar catálogo"></div>
+    </div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <div class="more"><button class="btn btn-light" id="cat-more" type="button" hidden><svg class="ico"><use href="#i-grid"/></svg><span>Ver todas</span></button></div>
+    <noscript><p style="padding:0 20px">Para ver el catálogo activa JavaScript, o visita nuestro <a href="https://www.instagram.com/balloons_by_ferymons/">Instagram</a>.</p></noscript>
+  </section>
+
+  </div>
+
+  <!-- DISEÑA TU DECORACIÓN (configurador 3D) -->
+  <section class="block solo" id="disena" aria-labelledby="cfg-title">
+    <div class="block-head">
+      <h2 class="h2 reveal" id="cfg-title">Diseña tu decoración.</h2>
+      <p class="reveal" style="--d:70ms">Elige forma, colores y nombre. Te mandamos precio por WhatsApp.</p>
+    </div>
+    <form class="cfg" id="cfg-form" novalidate autocomplete="off">
+      <div class="cfg-stage">
+        <div class="cfg-types opts" id="cfg-tipos" role="radiogroup" aria-label="Tipo de arreglo"></div>
+        <div class="cfg-view" id="cfg-view">
+          <canvas id="cfg-canvas" role="img" aria-label="Vista 3D de tu decoración"></canvas>
+          <div class="cfg-loading" id="cfg-loading">Cargando vista 3D…</div>
+          <p class="cfg-hint" aria-hidden="true"><svg class="ico mouse-only"><use href="#i-pointer"/></svg><span class="mouse-only">Arrastra para girar</span><svg class="ico touch-only"><use href="#i-hand"/></svg><span class="touch-only">Desliza de lado para girar</span></p>
+        </div>
+        <p class="cfg-note">Vista previa ilustrativa: el resultado final se ajusta a tu espacio.</p>
+      </div>
+      <div class="cfg-panel">
+        <div class="cfg-secs">
+          <section class="cfg-step" aria-labelledby="st-col">
+            <h3 id="st-col">Colores</h3>
+            <div class="pal-grid" id="cfg-paletas" role="radiogroup" aria-labelledby="st-col"></div>
+            <details class="cfg-more">
+              <summary>Elegir mis propios colores</summary>
+              <div class="cfg-roles" id="cfg-roles" role="radiogroup" aria-label="¿Qué color quieres cambiar?"></div>
+              <p class="cfg-pick" id="cfg-pick" aria-live="polite"></p>
+              <div class="cfg-swatches" id="cfg-swatches" aria-label="Colores de globo"></div>
+              <p class="cfg-sub">Acabado del acento</p>
+              <div class="opts" id="cfg-acabados"></div>
+            </details>
+          </section>
+          <section class="cfg-step" aria-labelledby="st-name">
+            <h3 id="st-name">Nombre <small>(opcional)</small></h3>
+            <div class="cfg-row">
+              <input class="cfg-input" type="text" name="nombre" maxlength="18" placeholder="Ej. Valentina" autocomplete="off" aria-label="Nombre (máximo 18 caracteres)">
+              <input class="cfg-input num" id="cfg-num" type="number" name="numero" min="0" max="99" inputmode="numeric" placeholder="Número" aria-label="Número o edad (opcional)">
+            </div>
+            <div class="opts opts-sm" id="cfg-estilos" role="radiogroup" aria-label="Color de las letras"></div>
+          </section>
+          <section class="cfg-step" aria-labelledby="st-size">
+            <div class="cfg-step-head"><h3 id="st-size">Tamaño</h3><button class="cfg-reset" type="button" id="cfg-reset"><svg class="ico"><use href="#i-reset"/></svg>Empezar de nuevo</button></div>
+            <div class="seg" id="cfg-tamanos" role="radiogroup" aria-labelledby="st-size"></div>
+          </section>
+        </div>
+        <div class="cfg-actions">
+          <button class="btn btn-wa" type="submit" id="cfg-send"><svg class="ico"><use href="#i-wa"/></svg>Cotizar este diseño</button>
+          <div class="cfg-actions-2">
+            <button class="btn btn-light" type="button" id="cfg-add"><svg class="ico"><use href="#i-plus"/></svg><span>Agregar a mi cotización</span></button>
+            <button class="btn btn-light" type="button" id="cfg-dl"><svg class="ico"><use href="#i-download"/></svg>Descargar imagen</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- 3 · CORAZÓN -->
+  <section class="heart" id="hecho" aria-labelledby="heart-title">
+    <h2 class="reveal" id="heart-title">Hecho a mano por <span>Fernanda y Montserrat.</span></h2>
+  </section>
+
+  <div class="paper-b" id="paper-b">
+  <!-- CÓMO FUNCIONA -->
+  <section class="block how" id="como-funciona" aria-labelledby="how-title">
+    <h2 class="h2 reveal" id="how-title">Cómo funciona</h2>
+    <ol class="steps">
+      <li class="reveal"><span class="step-ico"><svg class="ico"><use href="#i-grid"/></svg></span>Elige del catálogo</li>
+      <li class="reveal" style="--d:70ms"><span class="step-ico"><svg class="ico"><use href="#i-chat"/></svg></span>Escríbenos por WhatsApp</li>
+      <li class="reveal" style="--d:140ms"><span class="step-ico"><svg class="ico"><use href="#i-sparkles"/></svg></span>Nosotras montamos todo</li>
+    </ol>
+    <a class="btn wa-link reveal" style="--d:200ms" href="https://wa.me/528123535615" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Quiero cotizar mi evento</a>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES: aparece sola cuando haya respuestas en PREGUNTAS (ver script) -->
+  <section class="block" id="preguntas" aria-labelledby="faq-title" hidden>
+    <div class="block-head"><h2 class="h2 reveal" id="faq-title">Preguntas frecuentes</h2></div>
+    <div class="faq" id="faq"></div>
+  </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="contacto">
+  <div class="marquee" aria-label="Cumpleaños, baby shower, bodas, XV años, bautizos y graduaciones">
+    <div class="marquee-track" aria-hidden="true">
+      <span>Cumpleaños</span><span>Baby shower</span><span>Bodas</span><span>XV años</span><span>Bautizos</span><span>Graduaciones</span>
+      <span>Cumpleaños</span><span>Baby shower</span><span>Bodas</span><span>XV años</span><span>Bautizos</span><span>Graduaciones</span>
+    </div>
+  </div>
+  <div class="f-body">
+    <div class="f-cta">
+      <h2 class="h2">¿Celebramos<br>juntas?</h2>
+      <div class="f-actions">
+        <a class="btn btn-wa wa-link" href="https://wa.me/528123535615" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="btn btn-ig" href="https://www.instagram.com/balloons_by_ferymons/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ig"/></svg>Instagram</a>
+      </div>
+    </div>
+    <p class="f-bottom">WhatsApp 81 2353 5615 · Balloons by Fer&amp;Mons · © 2026 — Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<!-- flotantes -->
+<a class="fab wa-float wa-link" id="wa-float" href="https://wa.me/528123535615" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+<button class="fab qpill" id="qpill" type="button" aria-haspopup="dialog"><svg class="ico"><use href="#i-list"/></svg><span id="qpill-txt">0 en tu cotización</span><b id="qpill-n">0</b></button>
+<p class="sr-only" id="announce" aria-live="polite"></p>
+
+<!-- modal de producto -->
+<dialog class="pm-dlg" id="pm" aria-labelledby="pm-title">
+  <div class="pm">
+    <div class="pm-media">
+      <div class="pm-track" id="pm-track"></div>
+      <button class="pm-nav pm-prev" id="pm-prev" type="button" aria-label="Foto anterior"><svg class="ico"><use href="#i-left"/></svg></button>
+      <button class="pm-nav pm-next" id="pm-next" type="button" aria-label="Foto siguiente"><svg class="ico"><use href="#i-right"/></svg></button>
+      <div class="pm-dots" id="pm-dots"></div>
+    </div>
+    <div class="pm-body">
+      <p class="pm-cat" id="pm-cat"></p>
+      <h3 id="pm-title"></h3>
+      <p class="pm-desc" id="pm-desc"></p>
+      <h4>Incluye</h4>
+      <ul class="pm-incl" id="pm-incl"></ul>
+      <p class="pm-price" id="pm-price"></p>
+      <div class="pm-actions">
+        <a class="btn btn-want" id="pm-want" href="https://wa.me/528123535615" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Lo quiero</a>
+        <button class="btn btn-light" id="pm-add" type="button"><svg class="ico"><use href="#i-plus"/></svg><span>Agregar a mi cotización</span></button>
+        <button class="btn btn-light" id="pm-3d" type="button"><svg class="ico"><use href="#i-cube"/></svg>Personalizar en 3D</button>
+      </div>
+    </div>
+  </div>
+  <button class="x" id="pm-close" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-x"/></svg></button>
+</dialog>
+
+<!-- mi cotización -->
+<dialog class="q-dlg" id="qd" aria-labelledby="qd-title">
+  <div class="q">
+    <div class="q-head">
+      <h3 id="qd-title">Mi cotización</h3>
+      <p>Te respondemos por WhatsApp con precio y disponibilidad.</p>
+    </div>
+    <ul class="q-list" id="q-list"></ul>
+    <form class="q-form" id="q-form">
+      <label>Fecha del evento<input type="date" id="q-fecha" name="fecha"></label>
+      <label>Comentarios (opcional)<textarea id="q-notas" name="notas" rows="2" placeholder="Lugar, colores, nombre o edad…"></textarea></label>
+      <button class="btn btn-wa" type="submit" id="q-send"><svg class="ico"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+    </form>
+  </div>
+  <button class="x" id="qd-close" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-x"/></svg></button>
+</dialog>
+
+<script type="module">
+/* =========================================================
+   Balloons by Fer&Mons — catálogo, cotización y escena de globos
+   ========================================================= */
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const control = { progress: 0, started: false, canvasVisible: true };
+const mousePos = { x: 99, y: 99, isDown: false };
+const $ = (s, r = document) => r.querySelector(s);
+
+/* ---------------------------------------------------------
+   CATÁLOGO — edita aquí. precioDesde: número (ej. 2500) o null para "Cotizar".
+   etiquetas: filtros en los que aparece el producto.
+   diseno: cómo se abre en "Diseña tu decoración" (tipo: arco | backdrop | columnas | bouquet;
+           paleta: rosa-dorado | safari | baby-azul | lila-plata | rojo-pasion | blanco-dorado,
+           o colores: [principal, secundario, acento]; opcional acabado y numero).
+   --------------------------------------------------------- */
+const CATALOGO = [
+  { id:'arco-safari', diseno:{ tipo:'arco', paleta:'safari' }, nombre:'Arco orgánico safari', categoria:'arcos', etiquetas:['arcos','tematicas','baby-shower'],
+    fotos:[{ src:'arco-safari-1', alt:'Arco orgánico de globos verde salvia y nude con jirafas, cebra y elefante para un baby shower safari' },
+           { src:'arco-safari-2', alt:'Arco de globos verde salvia y beige con figuras de león, tigre, jirafas y elefante' }],
+    descripcion:'Arco orgánico en verde salvia y nude con animales de la selva. Ideal para baby shower o primer cumpleaños.',
+    incluye:['Arco orgánico de globos','Panel de fondo con nombre','Figuras de animales de la selva'], precioDesde:null, destacado:true },
+  { id:'arco-baby-shower-osito', diseno:{ tipo:'backdrop', paleta:'blanco-dorado' }, nombre:'Arco baby shower osito', categoria:'arcos', etiquetas:['arcos','baby-shower'],
+    fotos:[{ src:'arco-baby-shower-osito', alt:'Arco de globos dorados, cafés y nude con cubos con la palabra BABY y ositos de peluche' }],
+    descripcion:'Arco envolvente en dorado, café y nude, con cubos BABY y ositos. Cálido y elegante.',
+    incluye:['Arco orgánico de globos','Paneles de fondo','Cubos con letras BABY','Ositos decorativos'], precioDesde:null, destacado:true },
+  { id:'arco-save-the-date', diseno:{ tipo:'backdrop', paleta:'blanco-dorado' }, nombre:'Arco Save the Date nude y dorado', categoria:'arcos', etiquetas:['arcos','backdrops','bodas-xv'],
+    fotos:[{ src:'arco-save-the-date', alt:'Panel circular Save the Date con nombres y fecha en dorado y arco de globos nude y dorado con pampas' }],
+    descripcion:'Panel circular con nombres y fecha en dorado, globos nude y dorados con pampas. Para compromiso, pedida o boda.',
+    incluye:['Arco orgánico de globos','Panel circular con nombres y fecha','Pampas decorativas','Pedestal blanco'], precioDesde:null, destacado:true },
+  { id:'arco-mi-bautizo-nude', diseno:{ tipo:'arco', paleta:'blanco-dorado', acabado:'transparente' }, nombre:'Arco Mi Bautizo nude', categoria:'arcos', etiquetas:['arcos','backdrops','bautizos'],
+    fotos:[{ src:'arco-mi-bautizo-nude', alt:'Paneles de arco con letrero Mi Bautizo y globos nude, blancos y burbujas transparentes' }],
+    descripcion:'Paneles tipo arco con el nombre y globos nude, blancos y burbuja. Suave y luminoso.',
+    incluye:['Globos nude, blancos y burbuja','Paneles de arco','Letrero con nombre'], precioDesde:null, destacado:false },
+  { id:'arco-bautizo-rosa', diseno:{ tipo:'arco', paleta:'rosa-dorado', numero:1 }, nombre:'Arco rosa bautizo y primer año', categoria:'arcos', etiquetas:['arcos','cumpleanos','bautizos'],
+    fotos:[{ src:'arco-bautizo-rosa', alt:'Arco de globos rosas, blancos y plateados con flores, letrero Mi Bautizo y número 1 iluminado' }],
+    descripcion:'Globos rosas, blancos y plateados con flores y número iluminado. Para celebrar bautizo y primer año juntos.',
+    incluye:['Arco orgánico de globos con flores','Paneles con nombre','Número iluminado'], precioDesde:null, destacado:false },
+  { id:'arco-blanco-neon-flores', diseno:{ tipo:'arco', paleta:'safari' }, nombre:'Arco blanco con neón y flores', categoria:'arcos', etiquetas:['arcos','flores','bautizos'],
+    fotos:[{ src:'arco-blanco-neon-flores', alt:'Arco blanco con letrero de neón Mi Bautizo, arreglo floral y columna de globos blancos, verdes y nude' }],
+    descripcion:'Arco blanco con letrero de neón, arreglo floral y columna de globos en blanco, verde y nude.',
+    incluye:['Arco blanco','Letrero de neón','Arreglo floral','Columna de globos'], precioDesde:null, destacado:false },
+  { id:'columna-oh-baby-azul', diseno:{ tipo:'columnas', paleta:'baby-azul' }, nombre:'Columna baby shower azul', categoria:'arcos', etiquetas:['arcos','baby-shower'],
+    fotos:[{ src:'columna-oh-baby-azul', alt:'Columna de globos azules y blancos junto a un panel con el letrero Oh Baby Emilio' }],
+    descripcion:'Columna orgánica en azules y blanco con panel personalizado Oh Baby.',
+    incluye:['Columna orgánica de globos','Panel con nombre','Bases con mini arreglos'], precioDesde:null, destacado:false },
+  { id:'columnas-comunion-lila', diseno:{ tipo:'columnas', paleta:'lila-plata' }, nombre:'Columnas lila primera comunión', categoria:'arcos', etiquetas:['arcos','tematicas','bautizos'],
+    fotos:[{ src:'columnas-comunion-lila-1', alt:'Backdrop de primera comunión con columnas de globos lila, nude y dorados, flores y letrero dorado' },
+           { src:'columnas-comunion-lila-2', alt:'Vista frontal del backdrop Mi Primera Comunión con globos lila y dorados' }],
+    descripcion:'Globos lila, nude y dorados con flores y letrero Mi Primera Comunión.',
+    incluye:['Dos columnas orgánicas de globos','Panel con letrero','Flores decorativas','Bases con mini arreglos'], precioDesde:null, destacado:false },
+  { id:'columna-capibara', diseno:{ tipo:'columnas', colores:['#F9E07F','#A8D8F0','#C8A8F0'] }, nombre:'Columna pastel capibara', categoria:'arcos', etiquetas:['arcos','tematicas','cumpleanos'],
+    fotos:[{ src:'columna-capibara-1', alt:'Columna de globos pastel tipo arcoíris junto a un backdrop de capibaras en la alberca' },
+           { src:'columna-capibara-2', alt:'Backdrop de capibaras con columna de globos amarillos, azules, lilas, verdes y rosas' }],
+    descripcion:'Columna arcoíris en tonos pastel con backdrop ilustrado de capibaras.',
+    incluye:['Columna orgánica de globos pastel','Backdrop ilustrado','Mini arreglos de globos'], precioDesde:null, destacado:false },
+  { id:'numeros-50', diseno:{ tipo:'columnas', colores:['#1D1D1F','#C0C3C9','#D4AF37'], acabado:'cromado', numero:50 }, nombre:'Números gigantes 50 dorado y negro', categoria:'arcos', etiquetas:['arcos','cumpleanos'],
+    fotos:[{ src:'numeros-50-dorado-negro', alt:'Números 50 iluminados con racimo de globos dorados, plateados y negros' }],
+    descripcion:'Números iluminados con racimo de globos dorados, plateados y negros. Para cumpleaños o aniversario.',
+    incluye:['Números gigantes iluminados','Racimo de globos cromados'], precioDesde:null, destacado:false },
+  { id:'arco-arcoiris-sol', diseno:{ tipo:'arco', colores:['#F94144','#F9C74F','#3A6EA5'] }, nombre:'Arco arcoíris con sol', categoria:'arcos', etiquetas:['arcos','cumpleanos'],
+    fotos:[{ src:'arco-arcoiris-sol', alt:'Arco de globos de colores del arcoíris con globo de sol con lentes y mariposa metálica' }],
+    descripcion:'Arco multicolor con sol de lentes y mariposa metálica. Alegre y lleno de color.',
+    incluye:['Arco de globos multicolor','Globos metálicos de sol y mariposa','Base de globos azules'], precioDesde:null, destacado:false },
+  { id:'arco-circo', diseno:{ tipo:'arco', colores:['#D7263D','#F9C74F','#9EC5E8'], numero:1 }, nombre:'Arco circo primer año', categoria:'arcos', etiquetas:['arcos','tematicas','cumpleanos'],
+    fotos:[{ src:'arco-circo-primer-ano', alt:'Decoración de circo con globos rojos, amarillos, azules y dorados, carpas y número 1 iluminado' }],
+    descripcion:'Globos rojos, amarillos y azules con carpas de circo, pastel decorativo y número iluminado.',
+    incluye:['Arco orgánico de globos','Carpas decorativas','Número iluminado','Pastel decorativo'], precioDesde:null, destacado:false },
+  { id:'aro-lets-party', diseno:{ tipo:'backdrop', paleta:'rosa-dorado' }, nombre:'Aro dorado Let’s Party con flores', categoria:'arcos', etiquetas:['arcos','flores','cumpleanos'],
+    fotos:[{ src:'aro-lets-party', alt:'Aro dorado con neón Let’s Party, globos rosa cromado, dorados y nude, flores y palmas secas' }],
+    descripcion:'Aro dorado con neón, globos cromados y flores con palmas secas. Para una fiesta de adultos.',
+    incluye:['Aro metálico','Letrero de neón','Globos cromados y nude','Flores y palmas'], precioDesde:null, destacado:false },
+  { id:'columna-vino-nude', diseno:{ tipo:'arco', colores:['#7B1E3A','#E7D3C1','#F4A7B9'], acabado:'transparente' }, nombre:'Columna vino y nude con burbuja', categoria:'arcos', etiquetas:['arcos'],
+    fotos:[{ src:'columna-vino-nude-burbuja', alt:'Detalle de columna de globos vino, rosa y nude con globo burbuja y follaje verde' }],
+    descripcion:'Racimo de globos vino, rosa y nude con globo burbuja y follaje verde.',
+    incluye:['Columna orgánica de globos','Globo burbuja','Follaje decorativo'], precioDesde:null, destacado:false },
+  { id:'backdrop-aniversario', diseno:{ tipo:'backdrop', colores:['#1D1D1F','#C0C3C9','#D4AF37'], acabado:'cromado', numero:50 }, nombre:'Backdrop aniversario negro y dorado', categoria:'backdrops', etiquetas:['backdrops','bodas-xv'],
+    fotos:[{ src:'backdrop-aniversario-1', alt:'Backdrop negro con los nombres Lucero y Ever y el número 50 en dorado, con globos negros, plateados y dorados' },
+           { src:'backdrop-aniversario-2', alt:'Detalle del backdrop negro con letras doradas y globos negros y plateados' }],
+    descripcion:'Panel negro con nombres en dorado y globos negros, plateados y dorados. Elegante para un aniversario.',
+    incluye:['Panel negro con nombres','Arco orgánico de globos','Pedestales dorados'], precioDesde:null, destacado:false },
+  { id:'backdrop-sirena', diseno:{ tipo:'backdrop', colores:['#F7C6C7','#9DB394','#C8A8F0'] }, nombre:'Backdrop sirena con nombre', categoria:'backdrops', etiquetas:['backdrops','tematicas','cumpleanos'],
+    fotos:[{ src:'backdrop-sirena', alt:'Backdrop de sirena con panel de lentejuela, concha con el nombre Camila y columnas de globos pastel' }],
+    descripcion:'Panel de lentejuela, concha con nombre y columnas de globos pastel y verde salvia.',
+    incluye:['Panel de lentejuela','Concha con nombre','Dos columnas de globos'], precioDesde:null, destacado:false },
+  { id:'backdrop-iridiscente', diseno:{ tipo:'backdrop', paleta:'blanco-dorado', acabado:'transparente' }, nombre:'Backdrop iridiscente con flores', categoria:'backdrops', etiquetas:['backdrops','flores'],
+    fotos:[{ src:'backdrop-iridiscente-flores', alt:'Backdrop metálico iridiscente con globos burbuja tornasol y cascada de flores' }],
+    descripcion:'Fondo metálico tornasol con globos burbuja iridiscentes y cascada de flores.',
+    incluye:['Fondo metálico iridiscente','Globos burbuja tornasol','Cascada de flores','Pedestales dorados'], precioDesde:null, destacado:false },
+  { id:'telas-arena', diseno:{ tipo:'arco', paleta:'safari' }, nombre:'Telas arena con flores azules', categoria:'backdrops', etiquetas:['backdrops','flores','bodas-xv'],
+    fotos:[{ src:'telas-arena-flores-azules', alt:'Mesa con telas color arena y arreglos de flores azules y blancas en jarrones dorados al aire libre' }],
+    descripcion:'Drapeado de telas en tono arena con arreglos altos de flores azules y blancas.',
+    incluye:['Drapeado de telas','Mesa vestida','Dos arreglos florales en jarrón dorado'], precioDesde:null, destacado:false },
+  { id:'arco-telas-jardin', diseno:{ tipo:'arco', paleta:'blanco-dorado' }, nombre:'Arco de telas en jardín', categoria:'backdrops', etiquetas:['backdrops','flores','bodas-xv'],
+    fotos:[{ src:'arco-telas-jardin', alt:'Arco con telas blancas, flores blancas y palmas secas en un jardín' }],
+    descripcion:'Estructura con telas blancas, flores y palmas secas. Ideal para una ceremonia al aire libre.',
+    incluye:['Estructura de arco','Telas blancas','Arreglos de flores y palmas'], precioDesde:null, destacado:false },
+  { id:'corazon-bienvenida', diseno:{ tipo:'arco', paleta:'rojo-pasion' }, nombre:'Corazón de globos de bienvenida', categoria:'tematicas', etiquetas:['tematicas'],
+    fotos:[{ src:'corazon-bienvenida', alt:'Corazón de globos rojos con base de globos dorados, letrero Bienvenido Dios te ama y bouquets de corazón' }],
+    descripcion:'Corazón relleno de globos rojos con base dorada, letrero y bouquets de corazón.',
+    incluye:['Corazón relleno de globos','Letrero personalizado','Dos bouquets de corazón','Arreglo de rosas'], precioDesde:null, destacado:false },
+  { id:'arco-floral-propuesta', diseno:{ tipo:'backdrop', paleta:'rojo-pasion' }, nombre:'Arco floral de propuesta', categoria:'flores', etiquetas:['flores','backdrops','bodas-xv'],
+    fotos:[{ src:'arco-floral-propuesta', alt:'Arco de flores rojas y blancas con palmas, telas rojas y neón ¿Quieres ser mi novia? en una terraza con velas y pétalos' }],
+    descripcion:'Arco de flores rojas y blancas con neón, telas y camino de pétalos y velas.',
+    incluye:['Arco con flores y palmas','Letrero de neón','Telas','Velas y pétalos'], precioDesde:null, destacado:true },
+  { id:'espejo-xv-anos', diseno:{ tipo:'backdrop', paleta:'rosa-dorado' }, nombre:'Espejo de bienvenida XV años', categoria:'flores', etiquetas:['flores','bodas-xv'],
+    fotos:[{ src:'espejo-xv-anos', alt:'Espejo de bienvenida para XV años de Georgina decorado con flores rosas y blancas' }],
+    descripcion:'Espejo con nombre y fecha, arreglo floral en cascada y jarrón con flores.',
+    incluye:['Espejo de bienvenida con nombre','Arreglo floral en cascada','Arreglo en jarrón dorado'], precioDesde:null, destacado:true },
+  { id:'centro-mesa-gerberas', diseno:{ tipo:'bouquet', paleta:'rosa-dorado' }, nombre:'Centro de mesa con gerberas', categoria:'flores', etiquetas:['flores'],
+    fotos:[{ src:'centro-mesa-gerberas', alt:'Centro de mesa con gerberas rosas, rosas blancas y nube en botellas de cristal labrado' }],
+    descripcion:'Botellas de cristal labrado con gerberas, rosas y nube. Sencillo y fresco.',
+    incluye:['Tres botellas de cristal','Gerberas, rosas y nube','Espejo base'], precioDesde:null, destacado:false },
+  { id:'camino-mesa-floral', diseno:{ tipo:'bouquet', paleta:'rosa-dorado' }, nombre:'Camino de mesa floral', categoria:'flores', etiquetas:['flores'],
+    fotos:[{ src:'camino-mesa-floral', alt:'Camino de mesa con rosas, hortensias blancas, nube y eucalipto' }],
+    descripcion:'Camino de flores con rosas, hortensias, nube y eucalipto para la mesa principal.',
+    incluye:['Camino floral','Follaje de eucalipto'], precioDesde:null, destacado:false },
+  { id:'centro-mesa-vaquero', diseno:{ tipo:'bouquet', colores:['#E07A2F','#E9D7C3','#8B5A2B'] }, nombre:'Centro de mesa vaquero', categoria:'flores', etiquetas:['flores','tematicas'],
+    fotos:[{ src:'centro-mesa-vaquero', alt:'Centro de mesa vaquero con botella decorada con herradura y sombrero miniatura y flores naranjas' }],
+    descripcion:'Botella decorada con herradura y sombrero, con flores en tonos naranja.',
+    incluye:['Botella decorada','Florero con flores','Detalles vaqueros'], precioDesde:null, destacado:false },
+  { id:'bouquet-burbuja', diseno:{ tipo:'bouquet', colores:['#F4A7B9','#C47A3A','#D4AF37'], acabado:'cromado' }, nombre:'Bouquet burbuja Happy Birthday', categoria:'bouquets', etiquetas:['bouquets','cumpleanos'],
+    fotos:[{ src:'bouquet-burbuja-happy-birthday', alt:'Bouquet con globo burbuja Happy Birthday en dorado, globos cromados cobrizos y flecos rosas' }],
+    descripcion:'Globo burbuja con letras doradas, globos cromados y flecos. Un regalo que se nota.',
+    incluye:['Globo burbuja personalizado','Globos cromados y metálicos','Flecos decorativos','Base con peso'], precioDesde:null, destacado:true },
+  { id:'bouquet-estrellas', diseno:{ tipo:'bouquet', colores:['#E0218A','#F4A7B9','#C0C3C9'], acabado:'cromado' }, nombre:'Bouquet estrellas con mensaje', categoria:'bouquets', etiquetas:['bouquets'],
+    fotos:[{ src:'bouquet-estrellas', alt:'Bouquet de globos estrella fucsia con el mensaje Dios te ama y globos cromados plateados' }],
+    descripcion:'Estrellas metálicas fucsia con tu mensaje y globos cromados.',
+    incluye:['Dos globos estrella','Mensaje personalizado','Globos cromados','Flecos'], precioDesde:null, destacado:false },
+  { id:'bouquet-numeros-80', diseno:{ tipo:'bouquet', colores:['#7B1E3A','#B98AA0','#D4AF37'], acabado:'cromado', numero:80 }, nombre:'Bouquet números 80', categoria:'bouquets', etiquetas:['bouquets','cumpleanos'],
+    fotos:[{ src:'bouquet-numeros-80', alt:'Bouquet con números dorados 80 sobre base de globos vino y dorados' }],
+    descripcion:'Números metálicos sobre base de globos vino y dorados. Para cualquier edad.',
+    incluye:['Números metálicos','Base de globos','Globos metálicos arriba'], precioDesde:null, destacado:false },
+  { id:'candy-shop', diseno:{ tipo:'arco', colores:['#D7263D','#F9C74F','#7B2CBF'] }, nombre:'Candy Shop', categoria:'tematicas', etiquetas:['tematicas','cumpleanos'],
+    fotos:[{ src:'candy-shop', alt:'Decoración Candy Shop con dispensador de chicles hecho de globos rojos, osito de gomita gigante y globos de colores' }],
+    descripcion:'Dispensador de chicles de globos, gomitas gigantes y arco multicolor con dulces.',
+    incluye:['Columnas temáticas de globos','Arco multicolor','Dulces y paletas decorativas'], precioDesde:null, destacado:true },
+  { id:'arco-navideno', diseno:{ tipo:'arco', colores:['#B71C1C','#2E7D32','#D4AF37'], acabado:'cromado' }, nombre:'Arco navideño', categoria:'tematicas', etiquetas:['tematicas'],
+    fotos:[{ src:'arco-navideno', alt:'Arco navideño de globos rojos, verdes y dorados con moño rojo, bastones y regalos' }],
+    descripcion:'Arco rojo, verde y dorado con moño gigante y bastones. Para posadas y fiestas de fin de año.',
+    incluye:['Arco de globos','Moño gigante','Globos metálicos navideños'], precioDesde:null, destacado:false },
+  { id:'arco-gatito', diseno:{ tipo:'arco', paleta:'rosa-dorado' }, nombre:'Arco gatito de cumpleaños', categoria:'tematicas', etiquetas:['tematicas','cumpleanos','arcos'],
+    fotos:[{ src:'arco-gatito', alt:'Arco de cumpleaños de gatito con orejitas, globos rosas, nude y de puntitos, patitas y cajas pastel' }],
+    descripcion:'Arco con orejitas, globos de puntitos y patitas, y cajas en tonos pastel.',
+    incluye:['Arco con orejitas','Globos de puntitos y patitas','Cajas pastel','Globo de gatito'], precioDesde:null, destacado:false },
+  { id:'sobres-personalizados', diseno:{ tipo:'bouquet', paleta:'lila-plata' }, nombre:'Sobres personalizados con nombre', categoria:'tematicas', etiquetas:['tematicas'],
+    fotos:[{ src:'sobres-personalizados-1', alt:'Sobre personalizado morado marmoleado con nombre en dorado' },
+           { src:'sobres-personalizados-2', alt:'Sobres personalizados marmoleados en azul y rosa con nombres en dorado' }],
+    descripcion:'Sobres marmoleados con nombre en dorado. Para regalos o recuerdos.',
+    incluye:['Sobre impreso','Nombre en vinil dorado'], precioDesde:null, destacado:false },
+];
+/* fotos que abren el hero (ids del catálogo) */
+const COLLAGE = [
+  { id:'arco-baby-shower-osito', x:'2%',  y:'8%',  r:'-6deg', rm:'-2deg', z:2, depth:18 },
+  { id:'arco-floral-propuesta',  x:'48%', y:'0%',  r:'5deg',  rm:'2deg',  z:3, depth:30 },
+  { id:'bouquet-burbuja',        x:'8%',  y:'46%', r:'4deg',  rm:'-2deg', z:4, depth:26 },
+  { id:'candy-shop',             x:'54%', y:'44%', r:'-5deg', rm:'2deg',  z:1, depth:14 },
+];
+const FILTROS = [['todo','Todo'],['arcos','Arcos y columnas'],['backdrops','Backdrops y telas'],['flores','Flores'],['bouquets','Bouquets'],['tematicas','Temáticas'],['cumpleanos','Cumpleaños'],['baby-shower','Baby shower'],['bautizos','Bautizos y comuniones'],['bodas-xv','Bodas y XV']];
+const CAT_LABEL = { arcos:'Arcos y columnas', backdrops:'Backdrops y telas', flores:'Flores', bouquets:'Bouquets', tematicas:'Temáticas' };
+/* ancho real de la versión grande de cada foto (las que no aparecen solo tienen 640px) */
+const BIG = {'columnas-comunion-lila-1':1080,'columna-capibara-2':1080,'arco-safari-2':1080,'centro-mesa-gerberas':1280,'espejo-xv-anos':1280,'corazon-bienvenida':1080,'columnas-comunion-lila-2':1080,'columna-capibara-1':1280,'candy-shop':1280,'arco-navideno':1080,'centro-mesa-vaquero':1080,'arco-floral-propuesta':1280,'backdrop-sirena':1080,'sobres-personalizados-1':1080,'sobres-personalizados-2':1280,'arco-gatito':1280,'backdrop-aniversario-2':1280,'arco-circo-primer-ano':1080,'arco-arcoiris-sol':1080,'arco-blanco-neon-flores':1080,'arco-bautizo-rosa':1080,'columna-oh-baby-azul':1080,'bouquet-estrellas':1080,'numeros-50-dorado-negro':1080,'backdrop-aniversario-1':1080,'arco-safari-1':1080,'bouquet-burbuja-happy-birthday':1080,'arco-baby-shower-osito':1080,'arco-mi-bautizo-nude':1080,'arco-save-the-date':1080,'bouquet-numeros-80':1080,'backdrop-iridiscente-flores':1280};
+
+/* ---------- WhatsApp ---------- */
+// el redireccionamiento de wa.me rompe los emojis (🎈 llega como �); el endpoint oficial al que redirige los conserva
+const WA = 'https://api.whatsapp.com/send?phone=528123535615&text=';
+const WA_MSG = '¡Hola! Vi su página y quiero cotizar una decoración con globos 🎈';
+const waHref = (msg) => WA + encodeURIComponent(msg);
+document.querySelectorAll('.wa-link').forEach(a => { a.href = waHref(a.dataset.wa || WA_MSG); });
+
+/* ---------- utilidades ---------- */
+const byId = Object.fromEntries(CATALOGO.map(p => [p.id, p]));
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const imgAttrs = (slug, sizes) => {
+  const big = BIG[slug];
+  return `src="img/cat/${slug}-640.webp"` + (big ? ` srcset="img/cat/${slug}-640.webp 640w, img/cat/${slug}-1280.webp ${big}w" sizes="${sizes}"` : '');
+};
+const precio = (p) => p.precioDesde ? `Desde $${Number(p.precioDesde).toLocaleString('es-MX')}` : 'Cotizar';
+const announce = (t) => { const a = $('#announce'); a.textContent = ''; setTimeout(() => { a.textContent = t; }, 30); };
+
+/* ---------- cotización (se guarda en este navegador) ---------- */
+const KEY = 'fermons-cotizacion';
+const store = { items: [], custom: [], fecha: '', notas: '' };
+try { Object.assign(store, JSON.parse(localStorage.getItem(KEY) || '{}')); store.items = (store.items || []).filter(id => byId[id]); } catch (e) {}
+if (!Array.isArray(store.custom)) store.custom = [];
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} };
+const inQuote = (id) => store.items.includes(id);
+const fechaTxt = () => {
+  if (!store.fecha) return '';
+  const [y, m, d] = store.fecha.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+};
+const msgLoQuiero = (p) => `¡Hola! Me interesa ${p.nombre} que vi en su página 🎈. ¿Me pasan precio y disponibilidad para ${store.fecha ? 'el ' + fechaTxt() : 'la fecha de mi evento'}?`;
+const msgCotizacion = () => [
+  '¡Hola! Vi su página y quiero cotizar esto 🎈:',
+  '',
+  ...store.items.map((id, i) => `${i + 1}. ${byId[id].nombre} (${CAT_LABEL[byId[id].categoria]})`),
+  ...store.custom.map((c, i) => `${store.items.length + i + 1}. Diseño 3D — ${c.resumen}`),
+  '',
+  `Fecha del evento: ${store.fecha ? fechaTxt() : 'por definir'}`,
+  ...(store.notas.trim() ? [`Comentarios: ${store.notas.trim()}`] : []),
+  '',
+  '¿Me pasan precio y disponibilidad?',
+].join('\n');
+
+/* ---------- catálogo: filtros + tarjetas ---------- */
+const grid = $('#grid'), chips = $('#chips');
+const ordered = [...CATALOGO.filter(p => p.destacado), ...CATALOGO.filter(p => !p.destacado)];
+grid.innerHTML = ordered.map(p => {
+  const f = p.fotos[0];
+  return `<article class="p-card" data-id="${p.id}" data-tags="${p.etiquetas.join(' ')}">
+    <button class="p-open" type="button" aria-haspopup="dialog">
+      <span class="p-img"><img ${imgAttrs(f.src, '(min-width:1200px) 23vw, (min-width:760px) 31vw, 48vw')} width="640" height="800" loading="lazy" decoding="async" alt="${esc(f.alt)}"></span>
+      <span class="p-name">${esc(p.nombre)}</span>
+      <span class="p-meta"><span>${CAT_LABEL[p.categoria]}</span><b>${precio(p)}</b></span>
+    </button>
+    <button class="p-add" type="button" aria-pressed="false" aria-label="Agregar ${esc(p.nombre)} a mi cotización">
+      <svg class="ico i-plus"><use href="#i-plus"/></svg><svg class="ico i-check"><use href="#i-check"/></svg>
+    </button>
+  </article>`;
+}).join('');
+const count = (f) => f === 'todo' ? CATALOGO.length : CATALOGO.filter(p => p.etiquetas.includes(f)).length;
+chips.innerHTML = FILTROS.map(([k, label]) => `<button class="chip" type="button" data-f="${k}" aria-pressed="${k === 'todo'}">${label}<small>${count(k)}</small></button>`).join('');
+
+let currentFilter = 'todo', expanded = false;
+const moreBtn = $('#cat-more');
+const cardLimit = () => (innerWidth < 760 ? 6 : 8);          // primero unas cuantas; el resto con "Ver todas"
+function layoutCards(animate) {
+  const f = currentFilter, cards = [...grid.children], limit = cardLimit();
+  const first = new Map();
+  if (animate) cards.forEach(c => { if (!c.hidden) first.set(c, c.getBoundingClientRect()); });
+  let shown = 0, total = 0;
+  cards.forEach(c => {
+    const match = f === 'todo' || c.dataset.tags.split(' ').includes(f);
+    if (match) total++;
+    const vis = match && (expanded || shown < limit);
+    if (vis) shown++;
+    c.hidden = !vis;
+  });
+  moreBtn.hidden = total <= limit;
+  moreBtn.querySelector('span').textContent = expanded ? 'Ver menos' : `Ver las ${total} decoraciones`;
+  if (animate && !REDUCE) {
+    let k = 0;
+    cards.forEach(c => {
+      if (c.hidden) return;
+      const last = c.getBoundingClientRect(), f0 = first.get(c);
+      if (f0) {
+        const dx = f0.left - last.left, dy = f0.top - last.top;
+        if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) c.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }], { duration: 480, easing: 'cubic-bezier(0.23,1,0.32,1)' });
+      } else {
+        c.animate([{ opacity: 0, transform: 'scale(0.94)' }, { opacity: 1, transform: 'none' }], { duration: 340, delay: Math.min(k++, 8) * 35, easing: 'cubic-bezier(0.23,1,0.32,1)', fill: 'backwards' });
+      }
+    });
+  }
+  if (typeof measure === 'function') { measure(); queueScroll(); }
+  return total;
+}
+const scrollToGrid = () => {
+  const barH = $('.chips-bar').offsetHeight + header.offsetHeight;
+  const gridTop = grid.getBoundingClientRect().top;
+  if (gridTop < barH || gridTop > innerHeight * 0.6) smoothTo(window.scrollY + gridTop - barH - 8);
+};
+const applyFilter = (f) => {
+  if (f === currentFilter) return;
+  currentFilter = f; expanded = false;
+  chips.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c.dataset.f === f)));
+  const total = layoutCards(true);
+  scrollToGrid();
+  announce(`${total} ${total === 1 ? 'decoración' : 'decoraciones'}`);
+};
+moreBtn.addEventListener('click', () => {
+  const closing = expanded;
+  expanded = !expanded;
+  layoutCards(true);
+  if (closing) scrollToGrid();
+});
+queueMicrotask(() => layoutCards(false));
+chips.addEventListener('click', e => { const c = e.target.closest('.chip'); if (c) applyFilter(c.dataset.f); });
+grid.addEventListener('click', e => {
+  const card = e.target.closest('.p-card'); if (!card) return;
+  if (e.target.closest('.p-add')) { toggleItem(card.dataset.id); return; }
+  if (e.target.closest('.p-open')) openProduct(card.dataset.id);
+});
+
+/* ---------- diálogos con animación de entrada y salida ---------- */
+const html = document.documentElement;
+const openDlg = (d) => {
+  if (!d.open) d.showModal();
+  html.classList.add('dlg-open');
+  requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add('is-in')));
+};
+const closeDlg = (d) => {
+  if (!d.open) return;
+  d.classList.remove('is-in');
+  const done = () => { d.close(); if (!document.querySelector('dialog[open]')) html.classList.remove('dlg-open'); };
+  REDUCE ? done() : setTimeout(done, 260);
+};
+document.querySelectorAll('dialog').forEach(d => {
+  d.addEventListener('cancel', e => { e.preventDefault(); closeDlg(d); });
+  d.addEventListener('click', e => { if (e.target === d) closeDlg(d); });
+});
+
+/* ---------- modal de producto ---------- */
+const pm = $('#pm'), pmTrack = $('#pm-track'), pmDots = $('#pm-dots');
+let pmId = null;
+function openProduct(id, start = 0) {
+  const p = byId[id]; if (!p) return;
+  pmId = id;
+  pmTrack.innerHTML = p.fotos.map((f, i) => `<img ${imgAttrs(f.src, '(min-width:760px) 520px, 100vw')} width="640" height="800" alt="${esc(f.alt)}" ${i ? 'loading="lazy"' : ''}>`).join('');
+  pmTrack.scrollLeft = 0;
+  const many = p.fotos.length > 1;
+  pmDots.innerHTML = many ? p.fotos.map((_, i) => `<button type="button" aria-label="Foto ${i + 1} de ${p.fotos.length}" aria-current="${i === 0}" data-i="${i}"></button>`).join('') : '';
+  $('#pm-prev').hidden = $('#pm-next').hidden = !many;
+  $('#pm-cat').textContent = CAT_LABEL[p.categoria];
+  $('#pm-title').textContent = p.nombre;
+  $('#pm-desc').textContent = p.descripcion;
+  $('#pm-incl').innerHTML = p.incluye.map(t => `<li><svg class="ico"><use href="#i-check"/></svg>${esc(t)}</li>`).join('');
+  $('#pm-price').textContent = p.precioDesde ? precio(p) : 'Precio: cotiza por WhatsApp';
+  syncAddButton();
+  openDlg(pm);
+  if (start) requestAnimationFrame(() => requestAnimationFrame(() => { pmTrack.scrollLeft = start * pmTrack.clientWidth; }));
+}
+const pmGo = (dir) => pmTrack.scrollBy({ left: dir * pmTrack.clientWidth, behavior: REDUCE ? 'auto' : 'smooth' });
+$('#pm-prev').addEventListener('click', () => pmGo(-1));
+$('#pm-next').addEventListener('click', () => pmGo(1));
+pmDots.addEventListener('click', e => { const b = e.target.closest('button'); if (b) pmTrack.scrollTo({ left: +b.dataset.i * pmTrack.clientWidth, behavior: REDUCE ? 'auto' : 'smooth' }); });
+pmTrack.addEventListener('scroll', () => {
+  const i = Math.round(pmTrack.scrollLeft / Math.max(1, pmTrack.clientWidth));
+  pmDots.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-current', String(i === j)));
+}, { passive: true });
+$('#pm-close').addEventListener('click', () => closeDlg(pm));
+$('#pm-want').addEventListener('click', e => { e.currentTarget.href = waHref(msgLoQuiero(byId[pmId])); });
+$('#pm-add').addEventListener('click', () => toggleItem(pmId));
+function syncAddButton() {
+  if (!pmId) return;
+  const on = inQuote(pmId), b = $('#pm-add');
+  b.querySelector('span').textContent = on ? 'En tu cotización · Quitar' : 'Agregar a mi cotización';
+  b.querySelector('use').setAttribute('href', on ? '#i-check' : '#i-plus');
+}
+
+/* ---------- lista de cotización ---------- */
+const qd = $('#qd'), qList = $('#q-list'), qpill = $('#qpill'), waFloat = $('#wa-float');
+function toggleItem(id) {
+  const had = inQuote(id);
+  store.items = had ? store.items.filter(x => x !== id) : [...store.items, id];
+  save(); renderQuote();
+  announce(had ? `${byId[id].nombre} se quitó de tu cotización` : `${byId[id].nombre} agregado. Llevas ${store.items.length} en tu cotización`);
+  if (!had && !REDUCE) { qpill.classList.remove('bump'); void qpill.offsetWidth; qpill.classList.add('bump'); }
+}
+function renderQuote() {
+  const n = store.items.length + store.custom.length;
+  $('#qpill-n').textContent = n;
+  $('#qpill-txt').textContent = `${n} en tu cotización`;
+  grid.querySelectorAll('.p-card').forEach(c => {
+    const on = inQuote(c.dataset.id), b = c.querySelector('.p-add'), name = byId[c.dataset.id].nombre;
+    b.setAttribute('aria-pressed', String(on));
+    b.setAttribute('aria-label', on ? `Quitar ${name} de mi cotización` : `Agregar ${name} a mi cotización`);
+  });
+  qList.innerHTML = n ? store.items.map(id => {
+    const p = byId[id];
+    return `<li><img src="img/cat/${p.fotos[0].src}-640.webp" alt="" width="60" height="60" loading="lazy">
+      <div><strong>${esc(p.nombre)}</strong><span>${CAT_LABEL[p.categoria]} · ${precio(p)}</span></div>
+      <button class="q-rm" type="button" data-id="${p.id}" aria-label="Quitar ${esc(p.nombre)}">Quitar</button></li>`;
+  }).join('') + store.custom.map(c => `<li><img src="${c.thumb}" alt="" width="60" height="60">
+      <div><strong>${esc(c.titulo)}</strong><span>${esc(c.resumen.replace(/^Tipo: [^·]+· /, ''))}</span></div>
+      <button class="q-rm" type="button" data-uid="${c.uid}" aria-label="Quitar ${esc(c.titulo)}">Quitar</button></li>`).join('') : `<li class="q-empty">Aún no agregas nada. Toca el + en las fotos del catálogo o arma tu diseño en 3D.</li>`;
+  $('#q-send').disabled = !n;
+  $('#q-send').style.opacity = n ? '' : '0.5';
+  syncAddButton();
+  document.querySelectorAll('.show-add').forEach(b => {
+    const on = inQuote(b.dataset.id);
+    b.querySelector('span').textContent = on ? 'En tu cotización · Quitar' : 'Agregar a mi cotización';
+    b.querySelector('use').setAttribute('href', on ? '#i-check' : '#i-plus');
+  });
+  updateFabs();
+}
+qList.addEventListener('click', e => {
+  const b = e.target.closest('.q-rm'); if (!b) return;
+  if (b.dataset.uid) { store.custom = store.custom.filter(c => c.uid !== b.dataset.uid); save(); renderQuote(); announce('Diseño quitado de tu cotización'); }
+  else toggleItem(b.dataset.id);
+});
+qpill.addEventListener('click', () => openDlg(qd));
+$('#qd-close').addEventListener('click', () => closeDlg(qd));
+const qFecha = $('#q-fecha'), qNotas = $('#q-notas');
+qFecha.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+qFecha.value = store.fecha; qNotas.value = store.notas;
+qFecha.addEventListener('input', () => { store.fecha = qFecha.value; save(); });
+qNotas.addEventListener('input', () => { store.notas = qNotas.value; save(); });
+$('#q-form').addEventListener('submit', e => {
+  e.preventDefault();
+  if (!store.items.length && !store.custom.length) return;
+  window.open(waHref(msgCotizacion()), '_blank', 'noopener');
+});
+
+/* ---------- ¿Qué celebras? → abre el catálogo ya filtrado ---------- */
+const EVENTOS = [
+  { f:'cumpleanos',  t:'Cumpleaños',            img:'arco-gatito' },
+  { f:'baby-shower', t:'Baby shower',           img:'arco-baby-shower-osito' },
+  { f:'bodas-xv',    t:'Bodas y XV años',       img:'arco-telas-jardin' },
+  { f:'bautizos',    t:'Bautizos y comuniones', img:'arco-mi-bautizo-nude' },
+  { f:'tematicas',   t:'Temáticas',             img:'candy-shop' },
+  { f:'bouquets',    t:'Bouquets y regalos',    img:'bouquet-burbuja-happy-birthday' },
+];
+const eventsEl = $('#events');
+eventsEl.innerHTML = EVENTOS.map((e, i) => `<button class="ev" type="button" data-f="${e.f}">
+  <img src="img/cat/${e.img}-640.webp" width="640" height="480" loading="lazy" decoding="async" alt="">
+  <span class="ev-txt"><strong>${e.t}</strong><span>${count(e.f)} ideas<svg class="ico"><use href="#i-right"/></svg></span></span>
+</button>`).join('');
+eventsEl.addEventListener('click', e => {
+  const b = e.target.closest('.ev'); if (!b) return;
+  if (b.dataset.f === currentFilter) scrollToGrid(); else applyFilter(b.dataset.f);
+});
+
+/* ---------- Preguntas frecuentes ----------
+   Escribe la respuesta en r. Las que tengan r:null no se muestran;
+   si ninguna tiene respuesta, la sección no aparece en la página. */
+const PREGUNTAS = [
+  { p:'¿Con cuánta anticipación debo reservar?', r:null },
+  { p:'¿En qué zonas dan servicio?', r:null },
+  { p:'¿Cómo aparto mi fecha?', r:null },
+  { p:'¿Cuánto tardan en montar?', r:null },
+  { p:'¿Recogen la decoración al terminar el evento?', r:null },
+  { p:'¿Hacen entregas de bouquets a domicilio?', r:null },
+  { p:'¿Pueden hacer colores o temas que no están en el catálogo?', r:null },
+];
+const faqItems = PREGUNTAS.filter(q => q.r);
+if (faqItems.length) {
+  $('#faq').innerHTML = faqItems.map(q => `<details><summary>${esc(q.p)}<svg class="ico"><use href="#i-plus"/></svg></summary><p>${esc(q.r)}</p></details>`).join('');
+  $('#preguntas').hidden = false;
+} else {
+  $('#preguntas').remove();
+}
+
+/* ---------- pointer (escena) ---------- */
+window.addEventListener('pointermove', e => {
+  mousePos.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mousePos.y = -(e.clientY / window.innerHeight) * 2 + 1;
+}, { passive: true });
+window.addEventListener('mousedown', () => mousePos.isDown = true);
+window.addEventListener('mouseup', () => mousePos.isDown = false);
+const offTouch = e => { if (e.pointerType !== 'mouse') { mousePos.x = 99; mousePos.y = 99; } };
+window.addEventListener('pointerup', offTouch);
+window.addEventListener('pointercancel', offTouch);
+document.documentElement.addEventListener('mouseleave', () => { mousePos.x = 99; mousePos.y = 99; });
+
+/* ---------- smooth scroll (lerp 0.09) ---------- */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+const smooth = { target: 0, current: 0, running: false };
+const maxScroll = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+const smoothTick = () => {
+  smooth.current += (smooth.target - smooth.current) * 0.09;
+  if (Math.abs(smooth.target - smooth.current) < 0.5) smooth.current = smooth.target;
+  window.scrollTo(0, smooth.current);
+  if (smooth.current !== smooth.target) requestAnimationFrame(smoothTick); else smooth.running = false;
+};
+function smoothTo(y) {
+  smooth.target = Math.max(0, Math.min(maxScroll(), y));
+  if (REDUCE) { window.scrollTo(0, smooth.target); smooth.current = smooth.target; return; }
+  if (!smooth.running) { smooth.running = true; smooth.current = window.scrollY; requestAnimationFrame(smoothTick); }
+}
+window.addEventListener('wheel', e => {
+  if (REDUCE || e.ctrlKey || html.classList.contains('dlg-open')) return;
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;             // swipe horizontal en chips/collage: nativo
+  e.preventDefault();
+  let d = e.deltaY;
+  if (e.deltaMode === 1) d *= 16; else if (e.deltaMode === 2) d *= window.innerHeight;
+  if (!smooth.running) smooth.target = window.scrollY;
+  smoothTo(smooth.target + d);
+}, { passive: false });
+window.addEventListener('scroll', () => { if (!smooth.running) smooth.target = smooth.current = window.scrollY; }, { passive: true });
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const id = a.getAttribute('href');
+  const el = id === '#inicio' ? null : document.querySelector(id);
+  if (id !== '#inicio' && !el) return;
+  e.preventDefault();
+  smoothTo(el ? el.getBoundingClientRect().top + window.scrollY - (id === '#disena' ? header.offsetHeight : 0) : 0);
+  history.replaceState(null, '', id);
+}));
+
+/* ---------- scroll → fases de la escena, según la posición real de cada sección ----------
+   hero (flotan) → catálogo (caen, tapados por el catálogo) → corazón (se forma) → salen volando */
+const header = $('#header'), bgEl = $('#bg'), stageEl = $('#stage');
+const catalogEl = $('#paper-a'), heartEl = $('#hecho'), footerEl = $('#contacto');
+let keys = [[0, 0], [1, 1]], catTop = 0, heartTop = 0, footTop = 0;
+const absTop = (el) => el.getBoundingClientRect().top + window.scrollY;
+function measure() {
+  const vh = window.innerHeight || 1;
+  catTop = absTop(catalogEl); heartTop = absTop(heartEl); footTop = absTop(footerEl);
+  const raw = [[0, 0], [catTop, 0.6], [heartTop - vh, 1.3], [heartTop, 2.1], [heartTop + vh * 0.35, 2.5], [heartTop + vh, 3.45]];
+  for (let i = 1; i < raw.length; i++) raw[i][0] = Math.max(raw[i][0], raw[i - 1][0] + 1);
+  keys = raw;
+}
+const smoothstep = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+function computeProgress() {
+  const y = window.scrollY, vh = window.innerHeight || 1;
+  for (let i = 1; i < keys.length; i++) {
+    const [y0, p0] = keys[i - 1], [y1, p1] = keys[i];
+    if (y < y1) return p0 + (p1 - p0) * Math.max(0, (y - y0) / (y1 - y0));
+  }
+  const [yl, pl] = keys[keys.length - 1];
+  return pl + (y - yl) / vh;
+}
+let scrollQueued = false, lastStage = -1, pastHero = false, footerNear = false;
+function onScroll() {
+  scrollQueued = false;
+  const y = window.scrollY, vh = window.innerHeight;
+  const progress = computeProgress();
+  control.progress = progress;
+  // el canvas solo se dibuja cuando se ve: en el hero o mientras la sección del corazón está en pantalla
+  const catBottom = catTop + catalogEl.offsetHeight;
+  const coveredByCatalog = y >= catTop && y + vh <= catBottom;
+  control.frozen = coveredByCatalog;
+  control.canvasVisible = !(coveredByCatalog && innerWidth < 760) && y + 40 < footTop && !(control.cfgOnScreen && innerWidth < 760);
+  stageEl.style.visibility = control.canvasVisible ? 'visible' : 'hidden';
+  const stage = progress > 1.3 ? 2 : 0;
+  if (stage !== lastStage) { bgEl.dataset.stage = stage; lastStage = stage; }
+  header.classList.toggle('scrolled', y > 8);
+  const ft = footerEl.getBoundingClientRect().top;
+  header.classList.toggle('on-dark', ft < 40);
+  pastHero = y > vh * 0.6;
+  footerNear = ft < vh * 0.7;
+  updateFabs();
+}
+function updateFabs() {
+  const hasItems = store.items.length + store.custom.length > 0;
+  const inDesign = !!control.cfgOnScreen;   // el diseñador 3D ya trae sus botones: los flotantes no le estorban
+  qpill.classList.toggle('show', hasItems && !footerNear && !inDesign);
+  waFloat.classList.toggle('show', !hasItems && pastHero && !footerNear && !inDesign);
+}
+const queueScroll = () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(onScroll); } };
+window.addEventListener('scroll', queueScroll, { passive: true });
+window.addEventListener('resize', () => { measure(); queueScroll(); });
+new ResizeObserver(() => { measure(); queueScroll(); }).observe(document.body);
+measure(); renderQuote(); onScroll();
+
+/* ---------- reveals: una vez, en cuanto asoma cualquier parte ---------- */
+const io = new IntersectionObserver(entries => {
+  for (const en of entries) if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+}, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+let pendingReveals = [...document.querySelectorAll('.reveal')];
+pendingReveals.forEach(el => io.observe(el));
+// seguro: si un salto de scroll se brinca un elemento, igual termina visible (nunca se queda a medias)
+const revealPassed = () => {
+  if (!pendingReveals.length) return;
+  const vh = window.innerHeight;
+  pendingReveals = pendingReveals.filter(el => {
+    if (el.classList.contains('in')) return false;
+    if (el.getBoundingClientRect().top < vh) { el.classList.add('in'); io.unobserve(el); return false; }
+    return true;
+  });
+};
+window.addEventListener('scroll', () => requestAnimationFrame(revealPassed), { passive: true });
+
+/* ---------- la escena arranca en cuanto está lista (el título ya se ve desde el primer cuadro) ---------- */
+let sceneReady = false;
+const onReady = () => { sceneReady = true; control.started = true; };
+
+
+/* =========================================================
+   DISEÑA TU DECORACIÓN — configurador 3D (canvas propio)
+   La configuración vive en el objeto `cfg` (solo en memoria).
+   ========================================================= */
+const CFG_PALETAS = {
+  'rosa-dorado':   { t:'Rosa y dorado',   c:['#F4A7B9','#FFE4EC','#D4AF37'], acabado:'cromado' },
+  'safari':        { t:'Safari',          c:['#9DB394','#E7DCC8','#D8C3A0'], acabado:'mate' },
+  'baby-azul':     { t:'Baby azul',       c:['#9EC5E8','#FFFFFF','#5B8DC9'], acabado:'mate' },
+  'lila-plata':    { t:'Lila y plata',    c:['#C8A8F0','#F1E8FF','#C0C3C9'], acabado:'cromado' },
+  'rojo-pasion':   { t:'Rojo pasión',     c:['#D7263D','#FFFFFF','#9E1B32'], acabado:'cromado' },
+  'blanco-dorado': { t:'Blanco y dorado', c:['#FFFFFF','#F3E9DC','#D4AF37'], acabado:'cromado' },
+};
+const CFG_TIPOS = { arco:'Arco orgánico', backdrop:'Backdrop redondo + arco', columnas:'Columnas', bouquet:'Bouquet' };
+const CFG_TAMANOS = { chico:'Chico', mediano:'Mediano', grande:'Grande' };
+const CFG_ACABADOS = { mate:'Mate', cromado:'Cromado', transparente:'Transparente' };
+const CFG_ESTILOS = { dorado:'Dorado', blanco:'Blanco', neon:'Neón' };
+const CFG_DEFAULT = () => ({ tipo:'arco', paleta:'rosa-dorado', colores:[...CFG_PALETAS['rosa-dorado'].c], acabado:'cromado', nombre:'', estilo:'dorado', numero:'', tamano:'mediano' });
+const cfg = CFG_DEFAULT();
+
+const cfgForm = $('#cfg-form'), cfgView = $('#cfg-view');
+const optHtml = (type, name, value, inner) => `<label class="opt"><input type="${type}" name="${name}" value="${value}"><span>${inner}</span></label>`;
+$('#cfg-tipos').innerHTML = Object.entries(CFG_TIPOS).map(([k, t]) => optHtml('radio', 'tipo', k, esc(t))).join('');
+$('#cfg-paletas').innerHTML = Object.entries(CFG_PALETAS).map(([k, p]) => optHtml('radio', 'paleta', k, `<span class="sw" aria-hidden="true">${p.c.map(c => `<i style="background:${c}"></i>`).join('')}</span>${esc(p.t)}`)).join('');
+$('#cfg-acabados').innerHTML = Object.entries(CFG_ACABADOS).map(([k, t]) => optHtml('radio', 'acabado', k, t)).join('');
+$('#cfg-estilos').innerHTML = Object.entries(CFG_ESTILOS).map(([k, t]) => optHtml('radio', 'estilo', k, t)).join('');
+$('#cfg-tamanos').innerHTML = Object.entries(CFG_TAMANOS).map(([k, t]) => optHtml('radio', 'tamano', k, t)).join('');
+
+/* muestrario: colores de globo reales; primero eliges qué cambiar (principal, secundario o acento) */
+const SWATCHES = [['blanco','#FFFFFF'],['crema','#F3E9DC'],['nude','#E7D3C1'],['arena','#D8C3A0'],['café','#8B5A2B'],['dorado','#D4AF37'],['plata','#C0C3C9'],['negro','#1D1D1F'],
+  ['rosa pastel','#FFD6E2'],['rosa','#F4A7B9'],['rosa viejo','#D4A5A5'],['fucsia','#E0218A'],['durazno','#FFC4A3'],['coral','#FF7F6E'],['rojo','#D7263D'],['vino','#7B1E3A'],
+  ['amarillo','#F9C74F'],['naranja','#F28C28'],['menta','#A8E6CF'],['verde salvia','#9DB394'],['verde','#2E7D32'],['azul cielo','#9EC5E8'],['azul','#3A6EA5'],['azul marino','#1F3A5F'],
+  ['lila pastel','#E4D4FF'],['lila','#C8A8F0'],['morado','#7B2CBF']];
+const ROLE_NAMES = ['Principal', 'Secundario', 'Acento'];
+let cfgRole = 0;
+$('#cfg-roles').innerHTML = ROLE_NAMES.map((r, i) => `<button type="button" role="radio" data-r="${i}"><i aria-hidden="true"></i>${r}</button>`).join('');
+$('#cfg-swatches').innerHTML = SWATCHES.map(([n, h]) => `<button type="button" data-c="${h}" style="background:${h}" aria-label="${n}" title="${n}"></button>`).join('')
+  + `<label class="other" title="Otro color"><input type="color" name="custom" aria-label="Elegir otro color"></label>`;
+function renderColorUI() {
+  $('#cfg-roles').querySelectorAll('button').forEach((b, i) => { b.setAttribute('aria-checked', String(i === cfgRole)); b.querySelector('i').style.background = cfg.colores[i]; });
+  const cur = cfg.colores[cfgRole].toLowerCase();
+  $('#cfg-swatches').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c.toLowerCase() === cur)));
+  cfgForm.elements.custom.value = cfg.colores[cfgRole];
+  $('#cfg-pick').innerHTML = `Toca un color para el <b>${ROLE_NAMES[cfgRole].toLowerCase()}</b> · ahora: ${nombreColor(cfg.colores[cfgRole])}`;
+}
+function setRoleColor(hex) {
+  cfg.colores[cfgRole] = hex; cfg.paleta = null;
+  cfgForm.querySelectorAll('input[name="paleta"]').forEach(i => { i.checked = false; });
+  renderColorUI(); cfgScene?.recolor();
+}
+$('#cfg-roles').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cfgRole = +b.dataset.r; renderColorUI(); });
+$('#cfg-swatches').addEventListener('click', e => { const b = e.target.closest('button[data-c]'); if (b) setRoleColor(b.dataset.c); });
+
+function syncCfgForm() {
+  const set = (name, v) => cfgForm.querySelectorAll(`input[name="${name}"]`).forEach(i => { i.checked = i.value === v; });
+  set('tipo', cfg.tipo); set('paleta', cfg.paleta || ''); set('acabado', cfg.acabado); set('estilo', cfg.estilo); set('tamano', cfg.tamano);
+  const el = cfgForm.elements;
+  renderColorUI();
+  el.nombre.value = cfg.nombre; el.numero.value = cfg.numero;
+}
+
+/* nombres de color en español para el mensaje (el más cercano de esta lista) */
+const NOMBRES_COLOR = [['blanco','#FFFFFF'],['crema','#F3E9DC'],['nude','#E7D3C1'],['beige','#E7DCC8'],['arena','#D8C3A0'],['dorado','#D4AF37'],['plata','#C0C3C9'],['gris','#8E9196'],['negro','#1D1D1F'],['rosa pastel','#FFE0EA'],['rosa','#F4A7B9'],['fucsia','#E0218A'],['rojo','#D7263D'],['vino','#7B1E3A'],['malva','#B98AA0'],['durazno','#FFC4A3'],['rosa viejo','#D4A5A5'],['coral','#FF7F6E'],['naranja','#F28C28'],['amarillo','#F9C74F'],['verde salvia','#9DB394'],['verde','#2E7D32'],['menta','#A8E6CF'],['azul cielo','#9EC5E8'],['azul','#3A6EA5'],['azul marino','#1F3A5F'],['lila','#C8A8F0'],['lila pastel','#F1E8FF'],['morado','#7B2CBF'],['café','#8B5A2B']];
+const hexRgb = (h) => { const n = parseInt(h.replace('#', ''), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+const nombreColor = (hex) => {
+  const [r, g, b] = hexRgb(hex); let best = '', bd = Infinity;
+  for (const [name, h] of NOMBRES_COLOR) { const [r2, g2, b2] = hexRgb(h); const d = 2 * (r - r2) ** 2 + 4 * (g - g2) ** 2 + 3 * (b - b2) ** 2; if (d < bd) { bd = d; best = name; } }
+  return best;
+};
+function cfgColoresTxt() {
+  const names = cfg.colores.map(nombreColor).filter((n, i, a) => a.indexOf(n) === i);
+  const lista = names.length > 1 ? `${names.slice(0, -1).join(', ')} y ${names.at(-1)}` : names[0];
+  return `${cfg.paleta ? CFG_PALETAS[cfg.paleta].t + ': ' : ''}${lista} (acento ${nombreColor(cfg.colores[2])} ${CFG_ACABADOS[cfg.acabado].toLowerCase()})`;
+}
+function cfgResumen(sep = ' · ') {
+  return [
+    `Tipo: ${CFG_TIPOS[cfg.tipo]}`,
+    `Tamaño: ${CFG_TAMANOS[cfg.tamano]}`,
+    `Colores: ${cfgColoresTxt()}`,
+    ...(cfg.nombre.trim() ? [`Nombre: ${cfg.nombre.trim()} (letras ${({ dorado: 'doradas', blanco: 'blancas', neon: 'neón' })[cfg.estilo]})`] : []),
+    ...(cfg.numero !== '' ? [`Número: ${cfg.numero}`] : []),
+  ].join(sep);
+}
+
+/* ---------- controles ---------- */
+cfgForm.addEventListener('input', e => {
+  const t = e.target, n = t.name;
+  if (n === 'tipo' || n === 'tamano') { cfg[n] = t.value; cfgScene?.rebuild(); }
+  else if (n === 'paleta') {
+    const p = CFG_PALETAS[t.value]; cfg.paleta = t.value; cfg.colores = [...p.c]; cfg.acabado = p.acabado;
+    syncCfgForm(); cfgScene?.recolor(); cfgScene?.setFinish();
+  }
+  else if (n === 'custom') { setRoleColor(t.value); }
+  else if (n === 'acabado') { cfg.acabado = t.value; cfgScene?.setFinish(); }
+  else if (n === 'nombre') { cfg.nombre = t.value.slice(0, 18); cfgScene?.updateName(); }
+  else if (n === 'estilo') { cfg.estilo = t.value; cfgScene?.updateName(); }
+  else if (n === 'numero') {
+    const v = t.value.trim();
+    cfg.numero = v === '' ? '' : String(Math.max(0, Math.min(99, Math.round(Number(v)) || 0)));
+    cfgScene?.updateNumber();
+  }
+});
+cfgForm.elements.numero.addEventListener('change', e => { e.target.value = cfg.numero; });
+cfgForm.querySelectorAll('.cfg-input').forEach(i => i.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); i.blur(); } }));
+$('#cfg-reset').addEventListener('click', () => { Object.assign(cfg, CFG_DEFAULT()); syncCfgForm(); cfgScene?.rebuild(); });
+
+cfgForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const msg = [
+    '¡Hola! Diseñé esto en su página 🎈',
+    '',
+    cfgResumen('\n'),
+    '',
+    `¿Me pasan precio y disponibilidad para ${store.fecha ? 'el ' + fechaTxt() : 'la fecha de mi evento'}?`,
+  ].join('\n');
+  window.open(waHref(msg), '_blank', 'noopener');
+});
+$('#cfg-add').addEventListener('click', e => {
+  const btn = e.currentTarget;
+  const thumb = cfgScene ? cfgScene.thumb() : 'img/apple-touch-icon.png';
+  store.custom.push({ uid: Date.now().toString(36), titulo: `Diseño 3D · ${CFG_TIPOS[cfg.tipo]}`, resumen: cfgResumen(' · '), thumb });
+  save(); renderQuote();
+  announce(`Tu diseño se agregó. Llevas ${store.items.length + store.custom.length} en tu cotización`);
+  if (!REDUCE) { qpill.classList.remove('bump'); void qpill.offsetWidth; qpill.classList.add('bump'); }
+  const span = btn.querySelector('span'); span.textContent = 'Agregado';
+  btn.querySelector('use').setAttribute('href', '#i-check');
+  setTimeout(() => { span.textContent = 'Agregar a mi cotización'; btn.querySelector('use').setAttribute('href', '#i-plus'); }, 1800);
+});
+$('#cfg-dl').addEventListener('click', async () => {
+  const s = await ensureCfgScene(); if (!s) return;
+  const blob = await s.png();
+  const file = new File([blob], 'mi-decoracion-balloons.png', { type: 'image/png' });
+  // en celular, compartir directo (WhatsApp, fotos…); en computadora, descargar
+  if (matchMedia('(hover:none)').matches && navigator.canShare?.({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: 'Mi decoración — Balloons by Fer&Mons' }); return; }
+    catch (err) { if (err.name === 'AbortError') return; }
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = file.name;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+});
+/* desde el modal de producto: abrir el configurador precargado */
+function cfgLoadPreset(d = {}) {
+  cfg.tipo = CFG_TIPOS[d.tipo] ? d.tipo : 'arco';
+  if (d.colores) { cfg.paleta = null; cfg.colores = [...d.colores]; cfg.acabado = d.acabado || 'mate'; }
+  else { const k = CFG_PALETAS[d.paleta] ? d.paleta : 'rosa-dorado'; cfg.paleta = k; cfg.colores = [...CFG_PALETAS[k].c]; cfg.acabado = d.acabado || CFG_PALETAS[k].acabado; }
+  cfg.numero = d.numero != null ? String(d.numero) : '';
+  syncCfgForm();
+  if (cfgScene) cfgScene.rebuild(); else ensureCfgScene();
+}
+$('#pm-3d').addEventListener('click', () => {
+  const p = byId[pmId]; if (!p) return;
+  closeDlg(pm);
+  cfgLoadPreset(p.diseno);
+  setTimeout(() => smoothTo($('#disena').getBoundingClientRect().top + window.scrollY - header.offsetHeight), 280);
+});
+
+/* ---------- la escena se crea al acercarse y solo dibuja cuando se ve ---------- */
+let cfgScene = null, cfgPromise = null, cfgVisible = false;
+function ensureCfgScene() {
+  if (!cfgPromise) cfgPromise = createCfgScene()
+    .then(s => { cfgScene = s; s.setRunning(cfgVisible); return s; })
+    .catch(err => {
+      console.warn('Vista 3D no disponible:', err);
+      cfgView.classList.add('failed');
+      $('#cfg-loading').textContent = 'La vista 3D no está disponible en este dispositivo, pero puedes cotizar tu diseño igual.';
+      return null;
+    });
+  return cfgPromise;
+}
+new IntersectionObserver(([en]) => { if (en.isIntersecting) ensureCfgScene(); }, { rootMargin: '700px 0px' }).observe(cfgView);
+new IntersectionObserver(([en]) => { cfgVisible = en.isIntersecting; control.cfgOnScreen = cfgVisible; cfgScene?.setRunning(cfgVisible); queueScroll(); }, { threshold: 0 }).observe(cfgView);
+syncCfgForm();
+window.addEventListener('pageshow', syncCfgForm);   // si el navegador restaura el formulario, manda la configuración real
+
+async function createCfgScene() {
+  const T = await import('three');
+  const [{ OrbitControls }, { RoomEnvironment }, { mergeGeometries }] = await Promise.all([
+    import('three/addons/controls/OrbitControls.js'),
+    import('three/addons/environments/RoomEnvironment.js'),
+    import('three/addons/utils/BufferGeometryUtils.js'),
+  ]);
+  try { await document.fonts.load('700 100px "Dancing Script"'); } catch (e) {}
+
+  const canvas = $('#cfg-canvas');
+  const mobile = innerWidth < 768;
+  const MAX = mobile ? 150 : 300;
+  const capF = MAX / 300;
+  const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 2));
+  renderer.toneMapping = T.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = T.PCFSoftShadowMap;
+
+  const scene = new T.Scene();
+  const pmrem = new T.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;   // reflejos de estudio (cromado)
+
+  const camera = new T.PerspectiveCamera(32, 1, 0.1, 60);
+  camera.position.set(0, 1.55, 6);
+  const controls = new OrbitControls(camera, canvas);
+  controls.enableDamping = true; controls.dampingFactor = 0.08;
+  controls.enablePan = false;
+  controls.rotateSpeed = 0.7; controls.zoomSpeed = 0.6;
+  controls.minPolarAngle = Math.PI * 0.3;             // no tan desde arriba
+  controls.maxPolarAngle = Math.PI * 0.5 - 0.03;      // nunca por abajo del piso
+  controls.minAzimuthAngle = -1.15; controls.maxAzimuthAngle = 1.15;
+  canvas.style.touchAction = 'pan-y';                 // en celular, deslizar vertical sigue moviendo la página
+
+  // luz de estudio cálida
+  scene.add(new T.HemisphereLight(0xfff6f0, 0xf2d4db, 0.85));
+  const key = new T.DirectionalLight(0xfff0e0, 2.1);
+  key.position.set(2.6, 5.2, 4.2); key.castShadow = true;
+  key.shadow.mapSize.set(mobile ? 768 : 1536, mobile ? 768 : 1536);
+  Object.assign(key.shadow.camera, { left: -3.2, right: 3.2, top: 3.6, bottom: -1.2, near: 1, far: 16 });
+  key.shadow.bias = -0.0006; key.shadow.normalBias = 0.02; key.shadow.radius = 5;
+  scene.add(key);
+  const rim = new T.DirectionalLight(0xffe2ec, 1.15); rim.position.set(-4, 3.2, -3.5); scene.add(rim);
+  const fill = new T.DirectionalLight(0xffffff, 0.35); fill.position.set(0, 1.8, 6); scene.add(fill);
+
+  const group = new T.Group(); scene.add(group);
+  const props = new T.Group(); group.add(props);
+
+  // piso: solo sombras + sombra de contacto suave
+  const floor = new T.Mesh(new T.PlaneGeometry(16, 16), new T.ShadowMaterial({ color: 0x5a2a35, opacity: 0.15 }));
+  floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  const cc = document.createElement('canvas'); cc.width = cc.height = 128;
+  { const x = cc.getContext('2d'); const g = x.createRadialGradient(64, 64, 0, 64, 64, 64); g.addColorStop(0, 'rgba(0,0,0,0.55)'); g.addColorStop(0.55, 'rgba(0,0,0,0.22)'); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128); }
+  const contact = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: new T.CanvasTexture(cc), color: 0x6b2c3a, transparent: true, opacity: 0.5, depthWrite: false }));
+  contact.rotation.x = -Math.PI / 2; contact.position.y = 0.003; group.add(contact);
+
+  // geometría del globo: esfera ovalada (Y×1.08), más angosta abajo, con nudo
+  const seg = mobile ? [22, 16] : [30, 22];
+  const shell = new T.SphereGeometry(1, seg[0], seg[1]);
+  { const p = shell.attributes.position;
+    for (let i = 0; i < p.count; i++) {
+      const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+      const k = y < 0 ? 1 - 0.15 * y * y : 1 + 0.015 * y;
+      p.setXYZ(i, x * k, y * 1.08, z * k);
+    }
+    shell.computeVertexNormals(); }
+  const knot = new T.CylinderGeometry(0.06, 0.12, 0.14, 12); knot.translate(0, -1.08 - 0.06, 0);
+  const balloonGeo = mergeGeometries([shell, knot]);
+
+  // materiales
+  const matte = new T.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.3, metalness: 0, clearcoat: 0.6, clearcoatRoughness: 0.22, envMapIntensity: 0.75 });
+  const finishes = {
+    mate: matte.clone(),
+    cromado: new T.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.13, metalness: 1, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 1.6 }),
+    transparente: new T.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.05, metalness: 0, transparent: true, opacity: 0.42, depthWrite: false, clearcoat: 1, clearcoatRoughness: 0.03, specularIntensity: 1, envMapIntensity: 2.2 }),
+  };
+  const discMat = new T.MeshStandardMaterial({ color: 0xf6eee6, roughness: 0.75 });
+  const rimMat = new T.MeshPhysicalMaterial({ color: 0xd4af37, metalness: 1, roughness: 0.22, envMapIntensity: 1.4 });
+  const pedestalMat = new T.MeshStandardMaterial({ color: 0xfbf7f4, roughness: 0.55 });
+  const weightMat = new T.MeshPhysicalMaterial({ color: 0xd4af37, metalness: 1, roughness: 0.25, envMapIntensity: 1.4 });
+  const numberMat = new T.MeshPhysicalMaterial({ color: 0xd4af37, metalness: 1, roughness: 0.15, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 1.7 });
+  const bubbleMat = new T.MeshPhysicalMaterial({ color: 0xfff7fa, roughness: 0.03, metalness: 0, transparent: true, opacity: 0.2, depthWrite: false, clearcoat: 1, clearcoatRoughness: 0.02, specularIntensity: 1, envMapIntensity: 2.6, side: T.DoubleSide });
+  const stringMat = new T.LineBasicMaterial({ color: 0xc9b2b8 });
+  const standMat = new T.MeshPhysicalMaterial({ color: 0xd4af37, metalness: 1, roughness: 0.25, envMapIntensity: 1.4 });
+
+  const meshMain = new T.InstancedMesh(balloonGeo, matte, MAX);
+  const meshAcc = new T.InstancedMesh(balloonGeo, finishes[cfg.acabado], MAX);
+  const white = new T.Color(1, 1, 1);
+  for (const m of [meshMain, meshAcc]) {
+    for (let i = 0; i < MAX; i++) m.setColorAt(i, white);
+    m.instanceMatrix.setUsage(T.DynamicDrawUsage);
+    m.castShadow = true; m.frustumCulled = false; m.count = 0;
+    group.add(m);
+  }
+
+  const DOWN = new T.Vector3(0, -1, 0), Z = new T.Vector3(0, 0, 1);
+  const dummy = new T.Object3D();
+  const clamp01 = (v) => v < 0 ? 0 : v > 1 ? 1 : v;
+  const easeOutBack = (t) => { const c1 = 1.45, c3 = c1 + 1; return 1 + c3 * (t - 1) ** 3 + c1 * (t - 1) ** 2; };
+  const easeInCubic = (t) => t * t * t;
+  const easeInOut = (t) => t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+  const mulberry = (a) => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const SIZES = [0.064, 0.14, 0.23, 0.30];          // 5", 11", 18", 24" (radio en metros)
+  const pickR = (rnd, big = 0) => {
+    const w = [0.33 * (1 - big * 0.4), 0.47, 0.14 * (1 + big * 1.6), 0.05 * (1 + big * 3)];
+    let x = rnd() * w.reduce((a, b) => a + b);
+    for (let i = 0; i < 4; i++) { x -= w[i]; if (x <= 0) return SIZES[i] * (0.94 + rnd() * 0.12); }
+    return SIZES[1];
+  };
+  const pickSlot = (rnd) => { const x = rnd(); return x < 0.45 ? 'p' : x < 0.8 ? 's' : 'a'; };
+  const sizeIdx = () => ({ chico: 0, mediano: 1, grande: 2 })[cfg.tamano] ?? 1;
+  const ball = (pos, r, slot, anchor, order) => ({ pos, r, slot, order, dir: anchor ? anchor.clone().sub(pos).normalize() : DOWN.clone() });
+
+  // separa globos encimados (los globos reales se aplastan un poco: dejamos 10%)
+  function relax(list, iters = 7) {
+    for (let k = 0; k < iters; k++) {
+      for (let i = 0; i < list.length; i++) {
+        const a = list[i];
+        for (let j = i + 1; j < list.length; j++) {
+          const b = list[j];
+          const dx = b.pos.x - a.pos.x, dy = b.pos.y - a.pos.y, dz = b.pos.z - a.pos.z;
+          const d2 = dx * dx + dy * dy + dz * dz, min = (a.r + b.r) * 0.9;
+          if (d2 >= min * min || d2 < 1e-8) continue;
+          const d = Math.sqrt(d2), push = (min - d) / d * 0.5, wa = b.r / (a.r + b.r), wb = a.r / (a.r + b.r);
+          a.pos.x -= dx * push * wa; a.pos.y -= dy * push * wa; a.pos.z -= dz * push * wa;
+          b.pos.x += dx * push * wb; b.pos.y += dy * push * wb; b.pos.z += dz * push * wb;
+        }
+      }
+      for (const b of list) if (b.pos.y < b.r * 1.08) b.pos.y = b.r * 1.08;
+    }
+  }
+  // guirnalda orgánica: racimos de tamaños mezclados a lo largo de una curva
+  function garland(pts, count, rnd, thick, dens, bigBase) {
+    const curve = new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p)), false, 'centripetal');
+    let wmax = 0; for (let i = 0; i <= 40; i++) wmax = Math.max(wmax, dens(i / 40));
+    const out = []; let guard = 0;
+    while (out.length < count && guard++ < count * 40) {
+      const t = rnd(); if (rnd() * wmax > dens(t)) continue;
+      const c = curve.getPointAt(t), tan = curve.getTangentAt(t);
+      const n1 = new T.Vector3().crossVectors(tan, Z).normalize();
+      const ang = (rnd() * 2 - 1) * Math.PI * 0.85;
+      const th = thick[0] + (thick[1] - thick[0]) * t;
+      const rad = th * Math.sqrt(rnd());
+      const off = n1.multiplyScalar(Math.cos(ang)).addScaledVector(Z, Math.sin(ang) * 0.85).multiplyScalar(rad);
+      const r = pickR(rnd, bigBase * (1 - t) ** 3);
+      const pos = c.clone().add(off);
+      out.push({ pos, r, slot: pickSlot(rnd), anchor: c, order: t });
+    }
+    relax(out);
+    for (const b of out) {
+      const d = b.anchor.clone().sub(b.pos);
+      b.dir = d.lengthSq() > 1e-4 ? d.normalize() : new T.Vector3(0, 0, -1);   // el nudo mira hacia el centro de la guirnalda
+    }
+    return out;
+  }
+
+  /* ---------- texturas del nombre (Dancing Script) ---------- */
+  function nameCanvas(text, style, w, h, plaque) {
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const x = c.getContext('2d');
+    if (plaque) {                                          // letrero acrílico
+      const r = h * 0.2, m = 8;
+      x.beginPath(); x.moveTo(m + r, m); x.arcTo(w - m, m, w - m, h - m, r); x.arcTo(w - m, h - m, m, h - m, r); x.arcTo(m, h - m, m, m, r); x.arcTo(m, m, w - m, m, r); x.closePath();
+      x.fillStyle = style === 'dorado' ? 'rgba(255,253,251,0.9)' : 'rgba(40,22,30,0.88)'; x.fill();   // acrílico esmerilado
+      x.lineWidth = 5; x.strokeStyle = 'rgba(255,255,255,0.95)'; x.stroke();
+    }
+    x.textAlign = 'center'; x.textBaseline = 'middle';
+    let size = h * 0.62;
+    do { x.font = `700 ${size}px "Dancing Script", cursive`; size -= 4; } while (x.measureText(text).width > w * (plaque ? 0.82 : 0.86) && size > 24);
+    const cx = w / 2, cy = h * 0.53;
+    if (style === 'neon') {
+      const glow = '#ff4fa3';
+      x.shadowColor = glow;
+      for (const blur of [48, 26, 12]) { x.shadowBlur = blur; x.lineWidth = 8; x.strokeStyle = glow; x.strokeText(text, cx, cy); }
+      x.shadowBlur = 10; x.shadowColor = '#ffffff'; x.fillStyle = '#fff6fa'; x.fillText(text, cx, cy);
+    } else if (style === 'blanco') {
+      x.shadowColor = 'rgba(29,15,19,0.3)'; x.shadowBlur = 12; x.shadowOffsetY = 3;
+      x.fillStyle = '#ffffff'; x.fillText(text, cx, cy);
+    } else {
+      const g = x.createLinearGradient(0, cy - size * 0.5, 0, cy + size * 0.5);
+      g.addColorStop(0, '#f8e9ac'); g.addColorStop(0.42, '#d6a93e'); g.addColorStop(0.58, '#b5871f'); g.addColorStop(1, '#f1d47b');
+      x.shadowColor = 'rgba(70,45,8,0.35)'; x.shadowBlur = 6; x.shadowOffsetY = 2;
+      x.fillStyle = g; x.fillText(text, cx, cy);
+    }
+    return c;
+  }
+  let nameTargets = [], numberSlot = null, numberMesh = null, numberString = null, numberToken = 0;
+  const owned = [];   // geometrías/materiales/texturas de los accesorios, se liberan al cambiar de tipo
+  const own = (o) => { owned.push(o); return o; };
+  function addNamePlane(x, y, z, w, h, plaque) {
+    const mat = own(new T.MeshBasicMaterial({ transparent: true, depthWrite: false, toneMapped: false }));
+    const mesh = new T.Mesh(own(new T.PlaneGeometry(w, h)), mat);
+    mesh.position.set(x, y, z); mesh.visible = false; mesh.renderOrder = 2;
+    props.add(mesh);
+    nameTargets.push({ mesh, cw: 1024, ch: Math.round(1024 * h / w), plaque });
+  }
+  // letrero acrílico sobre un caballete dorado parado en el piso (como los letreros de bienvenida reales)
+  function addSignStand(x, z, w, h, top) {
+    const cy = top - h / 2;
+    addNamePlane(x, cy, z + 0.07, w, h, true);              // el acrílico va al frente; las patas, detrás
+    const t = nameTargets[nameTargets.length - 1]; t.extras = [];
+    const leg = (x0, z0, x1, y1, z1) => {
+      const a = new T.Vector3(x0, 0, z0), b = new T.Vector3(x1, y1, z1);
+      const m = new T.Mesh(own(new T.CylinderGeometry(0.011, 0.013, a.distanceTo(b), 8)), standMat);
+      m.position.copy(a).lerp(b, 0.5); m.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), b.clone().sub(a).normalize());
+      m.castShadow = true; m.visible = false; props.add(m); t.extras.push(m);
+    };
+    leg(x - w * 0.4, z + 0.03, x - w * 0.32, top + 0.07, z - 0.02);
+    leg(x + w * 0.4, z + 0.03, x + w * 0.32, top + 0.07, z - 0.02);
+    leg(x, z - 0.34, x, top + 0.02, z - 0.04);
+    const ledge = new T.Mesh(own(new T.BoxGeometry(w * 0.82, 0.022, 0.06)), standMat);
+    ledge.position.set(x, cy - h / 2 - 0.012, z + 0.07); ledge.castShadow = true; ledge.visible = false; props.add(ledge); t.extras.push(ledge);
+  }
+  function discColor() {
+    const has = cfg.nombre.trim() !== '';
+    if (has && cfg.estilo === 'neon') return new T.Color('#2a1a20');
+    if (has && cfg.estilo === 'blanco') return new T.Color(cfg.colores[0]).lerp(new T.Color('#3a2228'), 0.35);
+    return new T.Color('#f6eee6');
+  }
+  function updateName() {
+    const text = cfg.nombre.trim();
+    for (const t of nameTargets) {
+      if (t.mesh.material.map) { t.mesh.material.map.dispose(); t.mesh.material.map = null; }
+      t.extras?.forEach(o => { o.visible = !!text; });
+      if (!text) { t.mesh.visible = false; continue; }
+      const tex = new T.CanvasTexture(nameCanvas(text, cfg.estilo, t.cw, t.ch, t.plaque));
+      tex.colorSpace = T.SRGBColorSpace; tex.anisotropy = 4;
+      t.mesh.material.map = tex; t.mesh.material.needsUpdate = true; t.mesh.visible = true;
+    }
+    discMat.color.copy(discColor());
+  }
+
+  /* ---------- número: texto 3D extruido con bisel (globo metálico) ---------- */
+  let fontP = null;
+  const loadFont = () => fontP ||= Promise.all([import('three/addons/loaders/FontLoader.js'), import('three/addons/geometries/TextGeometry.js')])
+    .then(([{ FontLoader }, { TextGeometry }]) => new Promise((res, rej) => new FontLoader().load('https://unpkg.com/three@0.160.0/examples/fonts/helvetiker_bold.typeface.json', f => res({ f, TextGeometry }), undefined, rej)));
+  async function updateNumber() {
+    const token = ++numberToken;
+    if (numberMesh) { props.remove(numberMesh); numberMesh.geometry.dispose(); numberMesh = null; }
+    if (numberString) { props.remove(numberString); numberString.geometry.dispose(); numberString = null; }
+    dirty = true;
+    if (cfg.numero === '' || !numberSlot) return;
+    let font;
+    try { font = await loadFont(); } catch (e) { console.warn('No se pudo cargar la fuente del número', e); return; }
+    if (token !== numberToken) return;
+    const g = new font.TextGeometry(cfg.numero, { font: font.f, size: 1, height: 0.32, depth: 0.32, curveSegments: 12, bevelEnabled: true, bevelThickness: 0.14, bevelSize: 0.08, bevelSegments: 8 });
+    g.computeBoundingBox();
+    const bb = g.boundingBox;
+    g.translate(-(bb.max.x + bb.min.x) / 2, -(bb.max.y + bb.min.y) / 2, -(bb.max.z + bb.min.z) / 2);
+    g.computeVertexNormals();
+    numberMesh = new T.Mesh(g, numberMat);
+    numberMesh.scale.setScalar(numberSlot.height / (bb.max.y - bb.min.y));
+    numberMesh.position.copy(numberSlot.pos);
+    numberMesh.castShadow = true;
+    props.add(numberMesh);
+    if (numberSlot.string) {
+      const bottom = numberSlot.pos.clone().setY(numberSlot.pos.y - numberSlot.height / 2);
+      numberString = stringLine(numberSlot.string, bottom, mulberry(5));
+      props.add(numberString);
+    }
+  }
+
+  function stringLine(a, b, rnd) {
+    const mid = a.clone().lerp(b, 0.5).add(new T.Vector3((rnd() - 0.5) * 0.08, 0, (rnd() - 0.5) * 0.06));
+    const pts = new T.QuadraticBezierCurve3(a, mid, b).getPoints(18);
+    return new T.Line(own(new T.BufferGeometry().setFromPoints(pts)), stringMat);
+  }
+
+  /* ---------- los cuatro arreglos ---------- */
+  const layouts = {
+    arco(rnd) {
+      const k = sizeIdx(), sc = [0.82, 1, 1.16][k];
+      const count = Math.round([120, 200, 290][k] * capF);
+      const pts = [[-1.15, 0.12], [-1.28, 0.85], [-1.02, 1.62], [-0.38, 2.08], [0.42, 2.14], [1.02, 1.86], [1.3, 1.38]].map(([x, y]) => [x * sc, y * sc, 0]);
+      const balloons = garland(pts, count, rnd, [0.4 * sc, 0.26 * sc], t => 1 + 1.9 * (1 - t) ** 2 + 0.3 * t ** 3, 0.8);
+      addSignStand(-0.05, 0.62, 0.9, 0.4, 1.05);                                      // letrero en caballete al frente
+      numberSlot = { pos: new T.Vector3(0.74 * sc, 0.36, 0.38), height: 0.68 };
+      return { balloons, cam: { target: [0, 1.08 * sc, 0], dist: 5.1 * sc + 0.5 }, contact: { w: 3.4 * sc, d: 1.5 } };
+    },
+    backdrop(rnd) {
+      const k = sizeIdx(), R = [0.85, 1.0, 1.15][k], cy = R + 0.2;
+      const count = Math.round([90, 150, 220][k] * capF);
+      const disc = new T.Mesh(own(new T.CylinderGeometry(R, R, 0.06, 96)), discMat);
+      disc.rotation.x = Math.PI / 2; disc.position.set(0, cy, -0.12); disc.castShadow = disc.receiveShadow = true; props.add(disc);
+      const ring = new T.Mesh(own(new T.TorusGeometry(R, 0.024, 12, 140)), rimMat); ring.position.set(0, cy, -0.085); props.add(ring);
+      const stand = new T.Mesh(own(new T.BoxGeometry(0.06, cy, 0.04)), pedestalMat); stand.position.set(0, cy / 2, -0.2); stand.castShadow = true; props.add(stand);
+      const foot = new T.Mesh(own(new T.BoxGeometry(R * 0.9, 0.04, 0.34)), pedestalMat); foot.position.set(0, 0.02, -0.2); props.add(foot);
+      addNamePlane(R * 0.24, cy + R * 0.1, -0.08, R * 1.3, R * 0.65, false);           // nombre sobre el panel
+      const ang = [250, 228, 205, 182, 160, 138, 118];
+      const pts = [[-R * 0.55, 0.14, 0.14], ...ang.map(a => [Math.cos(a * Math.PI / 180) * (R + 0.16), cy + Math.sin(a * Math.PI / 180) * (R + 0.16), 0.04])];
+      const balloons = garland(pts, count, rnd, [0.36 * R, 0.24 * R], t => 1 + 1.6 * (1 - t) ** 2, 0.7);
+      const peds = [[R * 0.82, 0.58, 0.21], [R * 0.82 + 0.44, 0.4, 0.17]].slice(0, k === 0 ? 1 : 2);
+      for (const [x, h, r] of peds) { const p = new T.Mesh(own(new T.CylinderGeometry(r, r, h, 56)), pedestalMat); p.position.set(x, h / 2, 0.5); p.castShadow = p.receiveShadow = true; props.add(p); }
+      numberSlot = { pos: new T.Vector3(peds[0][0], peds[0][1] + 0.34, 0.5), height: 0.6 };
+      return { balloons, cam: { target: [0.1, cy * 0.92, 0], dist: 4.3 + R * 1.05 }, contact: { w: 2.3 * R + 1.3, d: 1.7 } };
+    },
+    columnas(rnd) {
+      const rings = [6, 8, 10][sizeIdx()], step = 0.2, ringR = 0.17, y0 = 0.56, xs = [-0.82, 0.82];
+      const balloons = [];
+      xs.forEach((cx, ci) => {
+        for (let q = 0; q < 4; q++) {                                   // base de globos de 18"
+          const a = q * Math.PI / 2 + Math.PI / 4, pos = new T.Vector3(cx + Math.cos(a) * 0.25, 0.25, Math.sin(a) * 0.25);
+          balloons.push(ball(pos, 0.23 * (0.97 + rnd() * 0.06), 's', new T.Vector3(cx, 0.25, 0), 0));
+        }
+        for (let i = 0; i < rings; i++) {                               // anillos de 4 globos, girados 45° entre sí
+          const y = y0 + i * step, slot = ['p', 's', 'a'][i % 3];
+          for (let q = 0; q < 4; q++) {
+            const a = q * Math.PI / 2 + (i % 2) * Math.PI / 4, pos = new T.Vector3(cx + Math.cos(a) * ringR, y, Math.sin(a) * ringR);
+            balloons.push(ball(pos, 0.14 * (0.97 + rnd() * 0.06), slot, new T.Vector3(cx, y, 0), (i + 1) / (rings + 2)));
+          }
+        }
+        const top = ball(new T.Vector3(cx, y0 + (rings - 1) * step + 0.4, 0), 0.3, 'a', null, 1);
+        if (ci === 0) top.hideIfNumber = true;                         // el número toma su lugar
+        balloons.push(top);
+      });
+      const H = y0 + (rings - 1) * step;
+      addSignStand(0, 0.3, 0.9, 0.4, 1.05);
+      numberSlot = { pos: new T.Vector3(xs[0], H + 0.5, 0), height: 0.72 };
+      return { balloons, cam: { target: [0, (H + 0.5) * 0.55, 0], dist: 3.6 + H * 0.95 }, contact: { w: 2.9, d: 1.0 } };
+    },
+    bouquet(rnd) {
+      const n = [4, 5, 6][sizeIdx()];
+      const W = new T.Vector3(0, 0.15, 0.1);                            // parte de arriba del peso
+      const weight = new T.Mesh(own(new T.CylinderGeometry(0.085, 0.095, 0.15, 40)), weightMat);
+      weight.position.set(0, 0.075, 0.1); weight.castShadow = true; props.add(weight);
+      const balloons = [];
+      for (let q = 0; q < 7; q++) {                                     // globitos de 5" alrededor del peso
+        const a = q / 7 * Math.PI * 2;
+        balloons.push(ball(new T.Vector3(Math.cos(a) * 0.14, 0.11 + rnd() * 0.05, 0.1 + Math.sin(a) * 0.14), 0.066, q % 2 ? 'p' : 's', new T.Vector3(0, 0.1, 0.1), 0));
+      }
+      const tops = [];
+      for (let i = 0; i < n; i++) {
+        const u = i / (n - 1) * 2 - 1, a = u * 0.95;
+        const pos = new T.Vector3(Math.sin(a) * 0.5, 1.28 + Math.cos(a * 1.3) * 0.22 + (rnd() - 0.5) * 0.08, 0.02 + (rnd() - 0.5) * 0.12);
+        const bb = ball(pos, 0.16 * (0.95 + rnd() * 0.1), ['p', 's', 'a'][i % 3], W, 0.3 + 0.6 * Math.abs(u));
+        tops.push(bb); balloons.push(bb);
+      }
+      const bR = 0.3, bc = new T.Vector3(0, 1.66, 0.14);               // globo burbuja con el nombre
+      const bubble = new T.Mesh(shell, bubbleMat);
+      bubble.scale.setScalar(bR); bubble.position.copy(bc);
+      bubble.quaternion.setFromUnitVectors(DOWN, W.clone().sub(bc).normalize());
+      props.add(bubble);
+      addNamePlane(0, bc.y + 0.02, bc.z + bR + 0.006, bR * 1.55, bR * 0.78, false);
+      for (const t of tops) props.add(stringLine(W, t.pos.clone().addScaledVector(t.dir, t.r * 1.22), rnd));
+      props.add(stringLine(W, bc.clone().addScaledVector(W.clone().sub(bc).normalize(), bR * 1.1), rnd));
+      numberSlot = { pos: new T.Vector3(0.66, 0.92, 0.22), height: 0.46, string: W.clone() };
+      return { balloons, cam: { target: [0, 0.95, 0], dist: 3.5 }, contact: { w: 1.3, d: 0.8, z: 0.1 } };
+    },
+  };
+
+  /* ---------- estado, animación de inflado/desinflado ---------- */
+  let balloons = [], phase = 'idle', phaseStart = 0, dirty = true;
+  let camFrom = null, camTo = null, camStart = 0, lastGoal = null, firstGoal = true;
+  function scaleOf(b, now) {
+    if (b.hideIfNumber && cfg.numero !== '') return 0;
+    if (phase === 'out') return b.r * (1 - easeInCubic(clamp01((now - phaseStart - b.dOut) / 260)));
+    if (phase === 'in') return b.r * easeOutBack(clamp01((now - phaseStart - b.dIn) / 620));
+    return b.r;
+  }
+  function writeInstances(now) {
+    let iM = 0, iA = 0;
+    for (const b of balloons) {
+      const s = Math.max(1e-4, scaleOf(b, now));
+      dummy.position.copy(b.pos); dummy.quaternion.copy(b.q); dummy.scale.set(s, s, s); dummy.updateMatrix();
+      if (b.slot === 'a') meshAcc.setMatrixAt(iA++, dummy.matrix); else meshMain.setMatrixAt(iM++, dummy.matrix);
+    }
+    meshMain.count = iM; meshAcc.count = iA;
+    meshMain.instanceMatrix.needsUpdate = true; meshAcc.instanceMatrix.needsUpdate = true;
+  }
+  function recolor() {
+    const [p, s, a] = cfg.colores.map(c => new T.Color(c));
+    let iM = 0, iA = 0;
+    for (const b of balloons) { if (b.slot === 'a') meshAcc.setColorAt(iA++, a); else meshMain.setColorAt(iM++, b.slot === 'p' ? p : s); }
+    meshMain.instanceColor.needsUpdate = true; meshAcc.instanceColor.needsUpdate = true;
+    numberMat.color.copy(a); rimMat.color.copy(a); weightMat.color.copy(a);
+    discMat.color.copy(discColor());
+    dirty = true;
+  }
+  function setFinish() { meshAcc.material = finishes[cfg.acabado]; dirty = true; }
+  function camGoal(goal, animate = true) {
+    lastGoal = goal;
+    const aspect = canvas.clientWidth / Math.max(1, canvas.clientHeight);
+    const tanH = Math.tan(T.MathUtils.degToRad(camera.fov) / 2);
+    const size = goal.box.getSize(new T.Vector3()), center = goal.box.getCenter(new T.Vector3());
+    // distancia para que quepa completo a lo alto y a lo ancho (con margen), sin importar la forma del canvas
+    const d = Math.max(size.y / 2 / tanH, size.x / 2 / (tanH * aspect)) * 1.16 + size.z / 2;
+    const dirV = camera.position.clone().sub(controls.target).normalize();
+    const t = new T.Vector3(center.x, center.y * 0.96, center.z * 0.5);
+    camFrom = { t: controls.target.clone(), p: camera.position.clone() };
+    camTo = { t, p: t.clone().addScaledVector(dirV, d) };
+    controls.minDistance = d * 0.62; controls.maxDistance = d * 1.45;
+    if (!animate || REDUCE || firstGoal) { controls.target.copy(camTo.t); camera.position.copy(camTo.p); camTo = null; firstGoal = false; }
+    else camStart = performance.now();
+  }
+  function clearProps() {
+    if (numberMesh) numberMesh.geometry.dispose();
+    while (props.children.length) props.remove(props.children[0]);
+    for (const o of owned) { if (o.map) o.map.dispose(); o.dispose(); }
+    owned.length = 0; nameTargets = []; numberSlot = null; numberMesh = null; numberString = null;
+  }
+  function build() {
+    clearProps();
+    const rnd = mulberry(({ arco: 11, backdrop: 23, columnas: 37, bouquet: 51 })[cfg.tipo] * 7 + sizeIdx());
+    const L = layouts[cfg.tipo](rnd);
+    balloons = L.balloons.slice(0, MAX);
+    let maxO = 0; for (const b of balloons) maxO = Math.max(maxO, b.order || 0);
+    for (const b of balloons) {
+      b.q = new T.Quaternion().setFromUnitVectors(DOWN, b.dir);
+      b.dOut = rnd() * 140;
+      b.dIn = (b.order || 0) / (maxO || 1) * 650 + rnd() * 90;          // se inflan desde la base hacia arriba
+    }
+    contact.scale.set(L.contact.w, L.contact.d, 1); contact.position.set(0, 0.003, L.contact.z || 0);
+    recolor(); setFinish(); updateName(); updateNumber();
+    // caja que ocupa el arreglo: globos + accesorios + lugar del número
+    const box = new T.Box3();
+    for (const b of balloons) box.expandByPoint(b.pos.clone().addScalar(b.r * 1.1)).expandByPoint(b.pos.clone().addScalar(-b.r * 1.1));
+    props.updateMatrixWorld(true); box.union(new T.Box3().setFromObject(props));
+    if (numberSlot) box.expandByPoint(numberSlot.pos.clone().addScalar(numberSlot.height * 0.6));
+    box.min.y = Math.min(box.min.y, 0);
+    camGoal({ box });
+  }
+  function rebuild() {
+    if (REDUCE || !balloons.length) { build(); phase = REDUCE ? 'idle' : 'in'; phaseStart = performance.now(); props.scale.setScalar(1); writeInstances(performance.now()); return; }
+    if (phase === 'out') return;   // ya se está desinflando; al terminar se arma con la configuración más reciente
+    phase = 'out'; phaseStart = performance.now();
+  }
+  function stepAnim(now) {
+    if (phase === 'out' && now - phaseStart > 260 + 140 + 20) { build(); phase = 'in'; phaseStart = now; }
+    if (phase === 'in') {
+      props.scale.setScalar(0.86 + 0.14 * easeOutBack(clamp01((now - phaseStart) / 520)));
+      if (now - phaseStart > 620 + 740 + 40) { phase = 'idle'; props.scale.setScalar(1); }
+    }
+    writeInstances(now);
+  }
+
+  /* ---------- tamaño del canvas ---------- */
+  function resize() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    if (lastGoal) camGoal(lastGoal, false);
+    dirty = true;
+  }
+  new ResizeObserver(resize).observe(canvas);
+  resize();
+
+  /* ---------- loop: solo cuando la sección se ve ---------- */
+  let running = false, raf = 0, last = performance.now(), swayT = 0, idle = true, idleTimer = 0, firstFrame = true;
+  controls.addEventListener('start', () => { idle = false; cfgView.classList.add('touched'); clearTimeout(idleTimer); });
+  controls.addEventListener('end', () => { idleTimer = setTimeout(() => { idle = true; }, 4000); });
+  function frame(now) {
+    raf = 0;
+    if (!running) return;
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (!REDUCE && idle) { swayT += dt; group.rotation.y = Math.sin(swayT * 0.32) * 0.42; }   // giro lento de vaivén
+    if (phase !== 'idle') stepAnim(now);
+    else if (dirty) writeInstances(now);
+    dirty = false;
+    if (camTo) {
+      const t = clamp01((now - camStart) / 700), e = easeInOut(t);
+      controls.target.lerpVectors(camFrom.t, camTo.t, e); camera.position.lerpVectors(camFrom.p, camTo.p, e);
+      if (t >= 1) camTo = null;
+    }
+    controls.update();
+    renderer.render(scene, camera);
+    if (firstFrame) { firstFrame = false; cfgView.classList.add('ready'); }
+  }
+  function setRunning(v) { running = v; if (v && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+
+  /* ---------- imagen para descargar / miniatura para la cotización ---------- */
+  const logo = new Image(); logo.src = 'img/logo-fermons-transparente.png';
+  async function png() {
+    if (phase !== 'idle') { phase = 'idle'; props.scale.setScalar(1); }
+    writeInstances(performance.now()); controls.update(); renderer.render(scene, camera);
+    const src = renderer.domElement, w = src.width, h = src.height;
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const x = c.getContext('2d');
+    const rg = x.createRadialGradient(w * 0.5, h * 0.3, 0, w * 0.5, h * 0.3, Math.max(w, h) * 0.75);
+    rg.addColorStop(0, '#ffffff'); rg.addColorStop(0.55, '#FFF6F8'); rg.addColorStop(1, '#FFEAF0');
+    x.fillStyle = rg; x.fillRect(0, 0, w, h);
+    const fg = x.createLinearGradient(0, h, 0, h * 0.54);
+    fg.addColorStop(0, '#FFE3EA'); fg.addColorStop(0.65, '#FFEFF3'); fg.addColorStop(1, 'rgba(255,239,243,0)');
+    x.fillStyle = fg; x.fillRect(0, 0, w, h);
+    x.drawImage(src, 0, 0);
+    if (!logo.complete) await new Promise(r => { logo.onload = logo.onerror = r; });
+    if (logo.naturalWidth) {
+      const lw = Math.round(Math.min(w, h) * 0.22), lh = Math.round(lw * logo.naturalHeight / logo.naturalWidth), m = Math.round(lw * 0.12);
+      x.drawImage(logo, w - lw - m, h - lh - m, lw, lh);
+    }
+    return new Promise(res => c.toBlob(res, 'image/png'));
+  }
+  function thumb() {
+    writeInstances(performance.now()); renderer.render(scene, camera);
+    const src = renderer.domElement, s = Math.min(src.width, src.height);
+    const c = document.createElement('canvas'); c.width = c.height = 120;
+    const x = c.getContext('2d'); x.fillStyle = '#FFF1F3'; x.fillRect(0, 0, 120, 120);
+    x.drawImage(src, (src.width - s) / 2, (src.height - s) / 2, s, s, 0, 0, 120, 120);
+    return c.toDataURL('image/jpeg', 0.8);
+  }
+
+  // primera vez: se arma e infla
+  build(); phase = REDUCE ? 'idle' : 'in'; phaseStart = performance.now(); writeInstances(phaseStart);
+  return { rebuild, recolor, setFinish, updateName: () => { updateName(); dirty = true; }, updateNumber, setRunning, png, thumb };
+}
+
+/* =========================================================
+   ESCENA WebGL — globos (Gravity, mismas constantes)
+   ========================================================= */
+let THREE;
+try {
+  THREE = await import('three');
+  initScene(document.getElementById('stage'), document.getElementById('scene'));
+} catch (err) {
+  console.warn('Escena 3D no disponible:', err);
+  stageEl.style.display = 'none';
+  sceneReady = true;
+}
+
+function initScene(container, canvas) {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.set(0, 0, 11);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(container.clientWidth, container.clientHeight, false);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  /* ---- paletas por etapa: rosa (hero) → lila (servicios) → rojo-rosa (corazón) ---- */
+  const mkPal = (p) => ({ pastel: new THREE.Color(p[0]), light: new THREE.Color(p[1]), medium: new THREE.Color(p[2]), deep: new THREE.Color(p[3]), glass: new THREE.Color(p[4]) });
+  // los 3 colores del logo: verde, durazno y rosa lila (un poco más intensos para que se vean sobre el fondo rosa)
+  //            pastel (durazno)  light (rosa)  medium (verde)  deep (durazno)  glass (rosa)
+  const palLogo  = mkPal(['#FFC2A3', '#F7A6DB', '#BFE27D', '#FFAD88', '#F9B8E4']);   // más saturados: el render 3D los apaga un poco
+  const palHero = palLogo, palLila = palLogo, palHeart = palLogo;
+  const palette = palHero;
+  const isBlack = false;
+  const ROLES = ['pastel', 'light', 'medium', 'deep', 'glass'];
+  const curPal = { pastel: new THREE.Color(), light: new THREE.Color(), medium: new THREE.Color(), deep: new THREE.Color(), glass: new THREE.Color() };
+
+  const hemiLight = new THREE.HemisphereLight(0xffffff, palette.medium.clone(), 1.6);
+  scene.add(hemiLight);
+
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.4);
+  keyLight.position.set(-6, 10, 8);
+  keyLight.castShadow = true;
+  keyLight.shadow.mapSize.width = 2048;
+  keyLight.shadow.mapSize.height = 2048;
+  keyLight.shadow.camera.near = 0.5;
+  keyLight.shadow.camera.far = 30;
+  keyLight.shadow.camera.left = -8;
+  keyLight.shadow.camera.right = 8;
+  keyLight.shadow.camera.top = 8;
+  keyLight.shadow.camera.bottom = -8;
+  keyLight.shadow.bias = -0.0003;
+  keyLight.shadow.radius = 12.0;
+  scene.add(keyLight);
+
+  const rimLight = new THREE.DirectionalLight(0xffffff, 1.25);
+  rimLight.position.set(8, 7, -8);
+  scene.add(rimLight);
+
+  const frontLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  frontLight.position.set(0, 0, 11);
+  scene.add(frontLight);
+
+  const sideBounceLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  sideBounceLight.position.set(-9, -2, 4);
+  scene.add(sideBounceLight);
+
+  /* ---- frustum ---- */
+  let viewportWidth = 10;
+  let viewportHeight = 6;
+  // dónde se juntan los globos y dónde se forma el corazón, para no quedar detrás del texto
+  let clusterX = 0, clusterY = 0, heartCX = 0;
+  const updateFrustumBounds = () => {
+    const fovRad = THREE.MathUtils.degToRad(camera.fov);
+    viewportHeight = 2 * Math.tan(fovRad / 2) * camera.position.z;
+    viewportWidth = viewportHeight * (container.clientWidth / container.clientHeight);
+    const wide = container.clientWidth >= 960;
+    clusterX = 0;                                       // al centro, detrás de las letras grandes
+    clusterY = wide ? -viewportHeight * 0.03 : -viewportHeight * 0.06;
+    heartCX = 0;                                        // corazón al centro, detrás de las letras
+  };
+  updateFrustumBounds();
+
+  const isMobile = window.innerWidth < 768;
+  const ballCount = isMobile ? 40 : 72;   // menos globos: el hero ahora tiene fotos y el móvil cuida rendimiento
+
+  /* ---- globos ---- */
+  const sphereGeometry = new THREE.SphereGeometry(1, 48, 48);
+  const balls = [];
+  for (let i = 0; i < ballCount; i++) {
+    let radius = 0.33;
+    const rand = Math.random();
+    if (rand < 0.3) radius = 0.27 + Math.random() * 0.12;
+    else if (rand < 0.8) radius = 0.42 + Math.random() * 0.18;
+    else radius = 0.66 + Math.random() * 0.21;
+    const mass = Math.pow(radius, 3);
+
+    let chosenColor = palette.medium;
+    let color = palette.medium;
+    let sphereMat;
+    let role = 'medium';
+    const isGlass = Math.random() < 0.22 && !isBlack;
+
+    if (isGlass) {
+      sphereMat = new THREE.MeshPhysicalMaterial({
+        color: palette.glass.clone(), roughness: 0.08, metalness: 0.0,
+        clearcoat: 1.0, clearcoatRoughness: 0.03, transmission: 0.95,
+        ior: 1.485, thickness: 2.2,
+        specularColor: new THREE.Color('#ffffff'), specularIntensity: 1.0,
+        attenuationColor: palette.pastel.clone(), attenuationDistance: 1.0,
+        emissive: palette.glass.clone(), emissiveIntensity: 0.12,
+        transparent: true,
+      });
+      color = palette.glass;
+      role = 'glass';
+    } else {
+      const colorRand = Math.random();
+      if (colorRand < 0.25) { chosenColor = palette.pastel; role = 'pastel'; }
+      else if (colorRand < 0.55) { chosenColor = palette.light; role = 'light'; }
+      else if (colorRand < 0.85) { chosenColor = palette.medium; role = 'medium'; }
+      else { chosenColor = palette.deep; role = 'deep'; }
+      // globos: material mate un poco más brillante que en Gravity (clearcoat 0.45, roughness 0.36)
+      sphereMat = new THREE.MeshPhysicalMaterial({
+        color: chosenColor.clone(), roughness: 0.36, metalness: 0.0,
+        clearcoat: 0.45, clearcoatRoughness: 0.35,
+        emissive: chosenColor.clone(), emissiveIntensity: 0.08,
+        transparent: true,
+      });
+      color = chosenColor;
+    }
+
+    const group = new THREE.Group();
+    const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMat);
+    sphereMesh.scale.setScalar(radius);
+    sphereMesh.castShadow = true;
+    sphereMesh.receiveShadow = true;
+    group.add(sphereMesh);
+    scene.add(group);
+
+    balls.push({
+      id: i, radius, mass,
+      position: new THREE.Vector3(0, 0, 0),
+      velocity: new THREE.Vector3(),
+      meshGroup: group, sphere: sphereMesh, material: sphereMat, role, isGlass,
+      visualScale: radius, color,
+      restPosition: new THREE.Vector3(0, 0, 0),
+      shapeTarget: new THREE.Vector3(),
+      angleY: Math.random() * Math.PI * 2,
+      angleZ: 0.1 + Math.random() * 0.45,
+    });
+  }
+  const meanRadius = balls.reduce((s, b) => s + b.radius, 0) / balls.length;
+  let shapeScale = 1;
+
+  /* ---- corazón ---- */
+  const inHeart = (x, y) => { const a = x * x + y * y - 1; return a * a * a - x * x * y * y * y <= 0; };
+  const assignHeartTargets = () => {
+    const S = Math.min(viewportWidth * 0.40, viewportHeight * 0.34);   // corazón más grande y aireado
+    const baseCY = -viewportHeight * 0.03;
+    shapeScale = Math.max(0.3, Math.min(1, (S * 0.45 / 2.3) / meanRadius));
+    for (let i = 0; i < balls.length; i++) {
+      let x = 0, y = 0, tries = 0;
+      do {
+        x = (Math.random() * 2 - 1) * 1.25;
+        y = Math.random() * 2.55 - 1.4;
+        tries++;
+      } while (!inHeart(x, y) && tries < 60);
+      balls[i].shapeTarget.set(x * S + heartCX, (y + 0.12) * S + baseCY, (Math.random() - 0.5) * 0.35);
+    }
+    // lugares repartidos en toda la pantalla (cuadrícula con variación, sin amontonarse)
+    const n = balls.length, aspect = viewportWidth / viewportHeight;
+    const cols = Math.max(3, Math.round(Math.sqrt(n * aspect))), rows = Math.ceil(n / cols);
+    const cells = Array.from({ length: cols * rows }, (_, k) => k).sort(() => Math.random() - 0.5);
+    for (let i = 0; i < n; i++) {
+      const c = cells[i] % cols, r = Math.floor(cells[i] / cols);
+      const hx = ((c + 0.15 + Math.random() * 0.7) / cols - 0.5) * viewportWidth * 0.96;
+      const hy = ((r + 0.15 + Math.random() * 0.7) / rows - 0.5) * viewportHeight * 0.9;
+      (balls[i].home ||= new THREE.Vector3()).set(hx, hy, -1.9 + Math.random() * 1.8);   // ninguno demasiado cerca de la cámara
+    }
+  };
+  assignHeartTargets();
+
+  /* ---- entrada desde fuera de pantalla ---- */
+  const scatterFar = (withInwardVelocity) => {
+    const R = Math.max(viewportWidth, viewportHeight) * 1.5;
+    for (const b of balls) {
+      const a = Math.random() * Math.PI * 2;
+      const px = Math.cos(a) * R * 1.25;
+      const py = Math.sin(a) * R * 0.85;
+      const pz = (Math.random() - 0.5) * 4;
+      b.position.set(px, py, pz);
+      b.meshGroup.position.copy(b.position);
+      if (withInwardVelocity) b.velocity.set(-px, -py, -pz).normalize().multiplyScalar(0.08 + Math.random() * 0.05);
+      else b.velocity.set(0, 0, 0);
+    }
+  };
+  scatterFar(false);
+
+  const params = {
+    gravity: 0, rebound: -0.3,
+    mouseRepelForce: 0.05, mouseRepelRadius: 4.4,
+    damping: 0.91, centerAttractForce: 0.0035, bounciness: 0.02,
+  };
+
+  const mouseProjVec = new THREE.Vector3();
+  const mouseWorld3D = new THREE.Vector3();
+  const updateMouse3D = () => {
+    mouseProjVec.set(mousePos.x, mousePos.y, 0.5);
+    mouseProjVec.unproject(camera);
+    const dir = mouseProjVec.sub(camera.position).normalize();
+    const distance = -camera.position.z / dir.z;
+    mouseWorld3D.copy(camera.position).add(dir.multiplyScalar(distance));
+  };
+
+  const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const sstep = (a, b, x) => { const t = clamp01((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const clock = new THREE.Clock();
+  let localStarted = false;
+  let entranceStart = 0;
+  let ambientIn = false;
+  let reportedReady = false;
+
+  const diffVec = new THREE.Vector3();
+  const collideDiff = new THREE.Vector3();
+  const relVel = new THREE.Vector3();
+  const deltaPos = new THREE.Vector3();
+  const rotAxis = new THREE.Vector3();
+  const prevMouseWorld = new THREE.Vector3();
+  let mouseSpeed = 0;
+
+  /* ---- un paso de física (verbatim de Gravity, paleta cambiada) ---- */
+  const step = (time, progress, allowMouse) => {
+    // los globos siempre flotan repartidos por toda la página (sin caer, sin corazón, sin salir volando);
+    // el scroll solo cambia sus colores: rosa → lila → rojo-rosa
+    const heroF = 1, floatF = 1, flyF = 0, shapeF = 0, dropF = 0;
+
+    // morph de paleta: rosa → lila → rojo-rosa
+    const bLila = sstep(0.55, 1.05, progress);
+    const bHeart = sstep(1.40, 1.95, progress);
+    for (const role of ROLES) curPal[role].copy(palHero[role]).lerp(palLila[role], bLila).lerp(palHeart[role], bHeart);
+    hemiLight.groundColor.copy(curPal.medium);
+
+    const entranceT = REDUCE ? 1 : easeOutCubic(clamp01((time - entranceStart) / 2.2));
+    const attractionBoost = lerp(7.5, 1, entranceT);
+
+    const isMouseInteracting = allowMouse && (Math.abs(mousePos.x) < 0.99 || Math.abs(mousePos.y) < 0.99);
+    mouseSpeed = isMouseInteracting ? mouseWorld3D.distanceTo(prevMouseWorld) : 0;
+    if (mouseSpeed > 3) mouseSpeed = 3;
+    prevMouseWorld.copy(mouseWorld3D);
+
+    let damping = 0.91;
+    damping = lerp(damping, 0.992, dropF);
+    damping = lerp(damping, 0.90, shapeF);
+    damping = lerp(damping, 0.985, flyF);
+
+    const camZ = camera.position.z;
+    const clusterActive = Math.max(floatF, entranceT < 1 ? 1 : 0);
+
+    for (let i = 0; i < balls.length; i++) {
+      const b = balls[i];
+      if (floatF > 0.01 && !REDUCE) {
+        b.velocity.x += Math.sin(time * 0.4 + b.id * 1.5) * 0.0004 * b.radius * floatF;
+        b.velocity.y += Math.cos(time * 0.5 + b.id * 1.2) * 0.0004 * b.radius * floatF;
+        b.velocity.z += Math.sin(time * 0.35 + b.id) * 0.0001 * floatF;
+      }
+      const clusterStrength = params.centerAttractForce * attractionBoost * clusterActive;
+      if (clusterStrength > 0.00001) {
+        b.velocity.x += (b.home.x - b.position.x) * clusterStrength * 0.6;
+        b.velocity.y += (b.home.y - b.position.y) * clusterStrength * 0.6;
+        b.velocity.z += (b.home.z - b.position.z) * clusterStrength * 0.9;
+      }
+      if (dropF > 0.001) b.velocity.y -= 0.011 * dropF;
+      if (shapeF > 0.001) {
+        const k = 0.06 * shapeF;
+        b.velocity.x += (b.shapeTarget.x - b.position.x) * k;
+        b.velocity.y += (b.shapeTarget.y - b.position.y) * k;
+        b.velocity.z += (b.shapeTarget.z - b.position.z) * k;
+      }
+      if (flyF > 0.001) {
+        const stagger = (b.id * 0.6180339887) % 1;
+        const local = sstep(stagger * 0.55, stagger * 0.55 + 0.45, flyF);
+        b.velocity.z += 0.05 * local;
+        b.velocity.x += b.position.x * 0.006 * local;
+        b.velocity.y += b.position.y * 0.006 * local;
+      }
+      if (isMouseInteracting) {
+        diffVec.subVectors(b.position, mouseWorld3D);
+        const rawDist = diffVec.length();
+        const down = mousePos.isDown;
+        const activeRepelRadius = down ? params.mouseRepelRadius * 1.4 : params.mouseRepelRadius;
+        const activeRepelForce = down ? params.mouseRepelForce * 1.7 : params.mouseRepelForce;
+        if (rawDist < activeRepelRadius && rawDist > 0.0001) {
+          const ratio = rawDist / activeRepelRadius;
+          const smoothFactor = 1.0 - (ratio * ratio * (3.0 - 2.0 * ratio));
+          const speedBoost = 1 + mouseSpeed * 3.2;
+          const push = smoothFactor * activeRepelForce * speedBoost;
+          diffVec.normalize();
+          diffVec.z *= 0.12;
+          diffVec.normalize();
+          b.velocity.addScaledVector(diffVec, push);
+        }
+      }
+
+      b.velocity.multiplyScalar(damping);
+      b.position.addScaledVector(b.velocity, 1);
+
+      const c = b.isGlass ? curPal.glass : curPal[b.role];
+      b.material.color.copy(c);
+      b.material.emissive.copy(c);
+      if (b.isGlass) b.material.attenuationColor.copy(curPal.pastel);
+
+      b.material.opacity = flyF > 0.001 ? 1 - sstep(camZ - 2.6, camZ - 0.3, b.position.z) : 1;
+
+      const targetVis = b.radius * (1 - (1 - shapeScale) * shapeF);
+      b.visualScale += (targetVis - b.visualScale) * 0.12;
+      b.sphere.scale.setScalar(b.visualScale);
+    }
+
+    // colisiones (casi apagadas en modo corazón)
+    const collideScale = 0.28 * (1 - 0.93 * shapeF) * (1 - flyF);
+    const subSteps = 4;
+    for (let s = 0; s < subSteps; s++) {
+      for (let i = 0; i < balls.length; i++) {
+        for (let j = i + 1; j < balls.length; j++) {
+          const b1 = balls[i], b2 = balls[j];
+          collideDiff.subVectors(b2.position, b1.position);
+          const dist = collideDiff.length();
+          const minDist = b1.visualScale + b2.visualScale;
+          if (dist < minDist && dist > 0.001) {
+            const overlap = minDist - dist;
+            collideDiff.multiplyScalar(1 / dist);
+            const totalMass = b1.mass + b2.mass;
+            const ratio1 = b2.mass / totalMass;
+            const ratio2 = b1.mass / totalMass;
+            b1.position.addScaledVector(collideDiff, -overlap * ratio1 * collideScale);
+            b2.position.addScaledVector(collideDiff, overlap * ratio2 * collideScale);
+            relVel.subVectors(b2.velocity, b1.velocity);
+            const velAlongNormal = relVel.dot(collideDiff);
+            if (velAlongNormal < -0.0001) {
+              const impulse = -(1 + params.bounciness) * velAlongNormal / (1 / b1.mass + 1 / b2.mass);
+              b1.velocity.addScaledVector(collideDiff, -impulse / b1.mass);
+              b2.velocity.addScaledVector(collideDiff, impulse / b2.mass);
+            }
+          }
+        }
+      }
+    }
+
+    // paredes + piso con rebote
+    const borderPad = 0.2;
+    const xBound = viewportWidth / 2 - borderPad;
+    const topY = viewportHeight / 2 - 0.05;
+    const floorY = -viewportHeight / 2 + 0.05;
+    const zBound = 2.0;
+    const restitution = 0.30 + 0.35 * dropF;
+    const contain = flyF < 0.5;
+    const zContain = flyF < 0.02;
+
+    for (let i = 0; i < balls.length; i++) {
+      const b = balls[i];
+      const r = b.visualScale;
+      if (contain) {
+        if (b.position.x < -xBound - r) { b.position.x = -xBound - r; b.velocity.x *= params.rebound; }
+        else if (b.position.x > xBound + r) { b.position.x = xBound + r; b.velocity.x *= params.rebound; }
+        if (b.position.y - r < floorY) {
+          b.position.y = floorY + r;
+          if (b.velocity.y < 0) b.velocity.y = -b.velocity.y * restitution;
+          if (dropF > 0.3) { b.velocity.x *= 0.86; b.velocity.z *= 0.86; }
+        }
+        if (b.position.y + r > topY) {
+          b.position.y = topY - r;
+          if (b.velocity.y > 0) b.velocity.y *= params.rebound;
+        }
+      }
+      if (zContain) {
+        if (b.position.z < -zBound) { b.position.z = -zBound; b.velocity.z *= params.rebound; }
+        else if (b.position.z > zBound) { b.position.z = zBound; b.velocity.z *= params.rebound; }
+      }
+      deltaPos.copy(b.position).sub(b.meshGroup.position);
+      if (deltaPos.lengthSq() > 0.000001) {
+        rotAxis.set(deltaPos.y, -deltaPos.x, 0).normalize();
+        const rotAngle = (deltaPos.length() / b.radius) * 0.95;
+        b.meshGroup.rotateOnWorldAxis(rotAxis, rotAngle);
+      }
+      b.meshGroup.position.copy(b.position);
+    }
+  };
+
+  /* ---- movimiento reducido: racimo y corazón estáticos, sin vuelo ---- */
+  let reducedPose = -1;
+  const settleCluster = () => {
+    for (const b of balls) {
+      b.position.copy(b.home);
+      b.velocity.set(0, 0, 0);
+    }
+    for (let k = 0; k < 260; k++) step(0, 0, false);
+    for (const b of balls) { b.restPosition.copy(b.position); b.velocity.set(0, 0, 0); }
+  };
+  const applyReducedPose = (progress) => {
+    const pose = 0;
+    const pal = pose === 0 ? palHero : palHeart;
+    for (const b of balls) {
+      const c = b.isGlass ? pal.glass : pal[b.role];
+      b.material.color.copy(c); b.material.emissive.copy(c); b.material.opacity = 1;
+      if (pose !== reducedPose) {
+        if (pose === 0) { b.position.copy(b.restPosition); b.visualScale = b.radius; }
+        else { b.position.copy(b.shapeTarget); b.visualScale = b.radius * shapeScale; }
+        b.velocity.set(0, 0, 0);
+        b.sphere.scale.setScalar(b.visualScale);
+        b.meshGroup.position.copy(b.position);
+      }
+    }
+    // el corazón se asienta fuera de cuadro (igual que en la versión animada), luego queda quieto
+    if (pose === 1 && pose !== reducedPose) {
+      for (let k = 0; k < 220; k++) step(0, 2.0, false);
+      for (const b of balls) b.velocity.set(0, 0, 0);
+    }
+    hemiLight.groundColor.copy(pal.medium);
+    reducedPose = pose;
+  };
+
+  /* ---- loop ---- */
+  const simulateAndRender = () => {
+    requestAnimationFrame(simulateAndRender);
+    const time = clock.getElapsedTime();
+    updateMouse3D();
+
+    if (control.started && !localStarted) {
+      localStarted = true;
+      entranceStart = time;
+      if (REDUCE) { settleCluster(); reducedPose = -1; }
+      else scatterFar(true);
+    }
+    if (!localStarted) {
+      renderer.render(scene, camera);
+      if (!reportedReady) { reportedReady = true; onReady(); }
+      return;
+    }
+    // la galería ya no ve el canvas: no gastar batería
+    if (control.canvasVisible === false) return;
+    if (control.frozen) return;   // detrás del vidrio del catálogo: se queda el último cuadro (ya difuminado), sin gastar
+
+    if (REDUCE) applyReducedPose(control.progress);
+    else step(time, control.progress, true);
+
+    renderer.render(scene, camera);
+    if (!reportedReady) { reportedReady = true; onReady(); }
+  };
+  // los globos arrancan fuera de cuadro: compilar todos los shaders ya, no a media entrada
+  renderer.compile(scene, camera);
+  simulateAndRender();
+
+  const handleResize = () => {
+    const width = container.clientWidth, height = container.clientHeight;
+    if (!width || !height) return;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
+    updateFrustumBounds();
+    // en celular la barra del navegador cambia el alto al hacer scroll: no re-sortear el corazón por eso
+    const minor = width === lastW && Math.abs(height - lastH) / lastH < 0.2;
+    if (!minor) { assignHeartTargets(); lastW = width; lastH = height; }
+    if (REDUCE && localStarted) reducedPose = -1;
+  };
+  let lastW = container.clientWidth, lastH = container.clientHeight || 1;
+  new ResizeObserver(handleResize).observe(container);
+}
+</script>
+</body>
+</html>
